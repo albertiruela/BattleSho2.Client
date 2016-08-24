@@ -50,7 +50,7 @@ public class MainViewC extends JFrame {
 	private JLabel jlClient = new JLabel ("CLIENT");
 	private JLabel jlEstat = new JLabel ("");
 	
-	
+	//Comentari random :D
 	
 	
 	public MainViewC() {
