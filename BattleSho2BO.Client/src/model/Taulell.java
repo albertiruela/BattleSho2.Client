@@ -19,7 +19,7 @@ public class Taulell {
 
 	public void carregar_taulell() throws IOException {
 		String linia;
-		FileReader f = new FileReader("2.txt");
+		FileReader f = new FileReader("1.txt");
 		BufferedReader b = new BufferedReader(f);
 		linia = b.readLine();
 		n_vaixells_petits = Integer.parseInt(linia);
@@ -31,14 +31,13 @@ public class Taulell {
 		n_vaixells_grans = Integer.parseInt(linia);
 		System.out.println(linia);
 		
-		String[][] taulell = new String[100][100];
-		
 		linia = b.readLine();
+		taulell = new String[linia.length()][linia.length()];
 		
 		int fila = 0;
 		while (linia!="1" && linia !="2" && linia !="3" && linia != null) {
 			String[] parts = linia.split(" ");
-			System.out.println(parts.length);
+			//System.out.println(parts.length);
 			for(int i=0; i<parts.length; ++i) taulell[fila][i] = parts[i];	
 			for (int i=0; i<parts.length; ++i) System.out.println(taulell[fila][i]);
 			fila++;
@@ -59,5 +58,55 @@ public class Taulell {
 	}
 	
 		
+	public int getFiles(){
+		return taulell.length;
+	}
+	
+	public int getColumnes(){
+		return taulell[0].length;
+	}
 
+	public String[][] getTaulell() {
+		return taulell;
+	}
+
+	public void setTaulell(String[][] taulell) {
+		this.taulell = taulell;
+	}
+
+	public int getN_vaixells_petits() {
+		return n_vaixells_petits;
+	}
+
+	public void setN_vaixells_petits(int n_vaixells_petits) {
+		this.n_vaixells_petits = n_vaixells_petits;
+	}
+
+	public int getN_vaixells_mitjans() {
+		return n_vaixells_mitjans;
+	}
+
+	public void setN_vaixells_mitjans(int n_vaixells_mitjans) {
+		this.n_vaixells_mitjans = n_vaixells_mitjans;
+	}
+
+	public int getN_vaixells_grans() {
+		return n_vaixells_grans;
+	}
+
+	public void setN_vaixells_grans(int n_vaixells_grans) {
+		this.n_vaixells_grans = n_vaixells_grans;
+	}
+
+	public int getDificultat() {
+		return dificultat;
+	}
+
+	public void setDificultat(int dificultat) {
+		this.dificultat = dificultat;
+	}
+
+	public void setVaixell(int i, int j){
+		taulell[i][j] = "V";
+	}
 }

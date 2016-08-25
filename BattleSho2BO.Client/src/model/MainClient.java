@@ -6,6 +6,7 @@ import javax.swing.SwingUtilities;
 
 
 
+
 import controller.ButtonsController;
 import network.ComunicacioServidor;
 
@@ -15,6 +16,7 @@ import network.ComunicacioServidor;
 import view.MainViewC;
 import view.VistaAccedirC;
 import view.VistaNouRegistre;
+import view.VistaPartida;
 
 
 public class MainClient {
@@ -28,15 +30,16 @@ public class MainClient {
 				
 				Configuracio config = new Configuracio();
 				
-				if (config.fes()){
+				//if (config.fes()){
 					
 					MainViewC clientView = new MainViewC();
 					VistaAccedirC vistaAccedir = new VistaAccedirC();
 					VistaNouRegistre vistaRegistre = new VistaNouRegistre();
+					VistaPartida vistaPartida = new VistaPartida();
 					
 					ComunicacioServidor cServidor = new ComunicacioServidor (config.getIp(), config.getPortServer());
 					
-					ButtonsController controller = new ButtonsController(clientView,vistaAccedir,vistaRegistre,cServidor);
+					ButtonsController controller = new ButtonsController(clientView,vistaAccedir,vistaRegistre,vistaPartida,cServidor);
 					
 					
 					
@@ -47,9 +50,10 @@ public class MainClient {
 					
 					vistaAccedir.setVisible(false);
 					vistaRegistre.setVisible(false);
+					vistaPartida.setVisible(false);
 					clientView.setVisible(true);
 					
-				}
+				//}
 			}
 		});
 	}

@@ -110,7 +110,7 @@ public class MainViewC extends JFrame {
 
 	}
 	
-public void registerController(ButtonsController controller){
+	public void registerController(ButtonsController controller){
 		
 		jbAccedir.setActionCommand("ACCEDIR");
 		jbAccedir.addActionListener(controller);

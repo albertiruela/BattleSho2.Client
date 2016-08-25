@@ -79,48 +79,77 @@ public class ComunicacioServidor extends Thread {
 			
 		public boolean sendUsuariAccedir (String message){
 				
-				Configuracio config = new Configuracio();
+			Configuracio config = new Configuracio();
+			
+			Boolean connexio = false; 
+			try {
+				//System.out.println("HOLA" + config.getPortServer());
+				sServer = new Socket("127.0.0.1",5200);
+				System.out.println("eyyy2");
+				dataIn = new DataInputStream(sServer.getInputStream());
+				System.out.println("eyyy3");
+				dataOut = new DataOutputStream(sServer.getOutputStream());
+				dataOut.writeUTF(message);
+				System.out.println(message);
 				
-				Boolean connexio = false; 
-				try {
-					//System.out.println("HOLA" + config.getPortServer());
-					sServer = new Socket("127.0.0.1",5200);
-					System.out.println("eyyy2");
-					dataIn = new DataInputStream(sServer.getInputStream());
-					System.out.println("eyyy3");
-					dataOut = new DataOutputStream(sServer.getOutputStream());
-					dataOut.writeUTF(message);
-					System.out.println(message);
+				String answer = new String();
+				answer = dataIn.readUTF();
+				if(answer.equals("OK")){
 					
-					String answer = new String();
-					answer = dataIn.readUTF();
-					if(answer.equals("OK")){
-						
-						connexio = true;
-					}else{
-						connexio = false;
-					}
-					
-					dataOut.close();
-					dataIn.close();
-					sServer.close();
-					
-				
-				} catch (UnknownHostException e) {
+					connexio = true;
+				}else{
 					connexio = false;
-					System.out.println("NO ES POT CONNECTAR 1");
-				} catch (IOException e) {
-					connexio = false;
-					System.out.println("NO ES POT CONNECTAR 2");
+				}
 				
-			}
+				dataOut.close();
+				dataIn.close();
+				sServer.close();
+				
+			
+			} catch (UnknownHostException e) {
+				connexio = false;
+				System.out.println("NO ES POT CONNECTAR 1");
+			} catch (IOException e) {
+				connexio = false;
+				System.out.println("NO ES POT CONNECTAR 2");
+			
+		}
 		
-		
-		
-		return (connexio);
+		return connexio;
 	}
 	
+	public String sendDemanaMapes(String message){
+		Configuracio config = new Configuracio();
+		String answer = new String();
+		Boolean connexio = false; 
+		try {
+			//System.out.println("HOLA" + config.getPortServer());
+			sServer = new Socket("127.0.0.1",5200);
+			System.out.println("eyyy2");
+			dataIn = new DataInputStream(sServer.getInputStream());
+			System.out.println("eyyy3");
+			dataOut = new DataOutputStream(sServer.getOutputStream());
+			dataOut.writeUTF(message);
+			System.out.println(message);
+			
+			answer = dataIn.readUTF();
+			
+			dataOut.close();
+			dataIn.close();
+			sServer.close();
+			
+		
+		} catch (UnknownHostException e) {
+			connexio = false;
+			System.out.println("NO ES POT CONNECTAR 1");
+		} catch (IOException e) {
+			connexio = false;
+			System.out.println("NO ES POT CONNECTAR 2");
+		}
 	
+	
+		return answer;
+	}
 	
 
 }
