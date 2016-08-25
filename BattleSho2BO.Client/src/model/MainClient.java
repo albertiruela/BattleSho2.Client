@@ -42,7 +42,7 @@ public class MainClient {
 					ButtonsController controller = new ButtonsController(clientView,vistaAccedir,vistaRegistre,vistaPartida,cServidor);
 					
 					
-					
+					//ei
 					clientView.registerController(controller);
 					vistaAccedir.registerControllers(controller);
 					vistaRegistre.registerControllers(controller);
