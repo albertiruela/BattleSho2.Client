@@ -18,6 +18,8 @@ import view.VistaAccedirC;
 import view.VistaNouRegistre;
 import view.VistaPartida;
 
+import model.Configuracio;
+
 
 public class MainClient {
 	
@@ -30,7 +32,7 @@ public class MainClient {
 				
 				Configuracio config = new Configuracio();
 				
-				//if (config.fes()){
+				if (config.fes()){
 					
 					MainViewC clientView = new MainViewC();
 					VistaAccedirC vistaAccedir = new VistaAccedirC();
@@ -53,7 +55,7 @@ public class MainClient {
 					vistaPartida.setVisible(false);
 					clientView.setVisible(true);
 					
-				//}
+				}
 			}
 		});
 	}

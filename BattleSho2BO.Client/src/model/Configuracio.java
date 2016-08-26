@@ -17,13 +17,14 @@ public class Configuracio {
 	public boolean fes(){
 		Gson gson = new GsonBuilder().create();
 		BufferedReader BR;
+		
 		try {
 		   BR = new BufferedReader(new FileReader("config.json"));
 		   Configuracio aux = gson.fromJson(BR, Configuracio.class);
 		   
 		   this.portServer = aux.portServer;
 		   this.IP = aux.IP; 
-		   
+		   System.out.println();
 		  } catch (FileNotFoundException e) {
 		   return false;
 		  } catch (Exception e) {
@@ -33,7 +34,7 @@ public class Configuracio {
 		  return true;
 	}
 	public int getPortServer() {
-		return portServer;
+		return this.portServer;
 	}
 
 	public String getIp() {

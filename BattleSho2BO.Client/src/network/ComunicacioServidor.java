@@ -20,12 +20,14 @@ public class ComunicacioServidor extends Thread {
 	
 	private DataOutputStream dataOut;
 	
-	private int portServidor;
+	private int portServer;
 	
 	private ButtonsController controller;
 	
 	public ComunicacioServidor(String ip, int portServidor){
-		this.portServidor = portServidor;
+		
+		this.portServer= portServidor;
+		
 	}
 	
 	public void registerController(ButtonsController controller){
@@ -36,12 +38,11 @@ public class ComunicacioServidor extends Thread {
 	
 		public boolean sendUsuariARegistrar (String message){
 			System.out.println("eyyy2");
-			Configuracio config = new Configuracio();
 			
 			Boolean connexio = false; 
 			try {
-				//System.out.println("HOLA" + config.getPortServer());
-				sServer = new Socket("127.0.0.1",5200);
+				System.out.println(portServer);
+				sServer = new Socket("127.0.0.1",portServer);
 				System.out.println("eyyy2");
 				dataIn = new DataInputStream(sServer.getInputStream());
 				System.out.println("eyyy3");
@@ -79,12 +80,12 @@ public class ComunicacioServidor extends Thread {
 			
 		public boolean sendUsuariAccedir (String message){
 				
-			Configuracio config = new Configuracio();
+			
 			
 			Boolean connexio = false; 
 			try {
-				//System.out.println("HOLA" + config.getPortServer());
-				sServer = new Socket("127.0.0.1",5200);
+				
+				sServer = new Socket("127.0.0.1",portServer);
 				System.out.println("eyyy2");
 				dataIn = new DataInputStream(sServer.getInputStream());
 				System.out.println("eyyy3");
@@ -119,12 +120,12 @@ public class ComunicacioServidor extends Thread {
 	}
 	
 	public String sendDemanaMapes(String message){
-		Configuracio config = new Configuracio();
+		
 		String answer = new String();
-		Boolean connexio = false; 
+		boolean connexio = false;
 		try {
-			//System.out.println("HOLA" + config.getPortServer());
-			sServer = new Socket("127.0.0.1",5200);
+			
+			sServer = new Socket("127.0.0.1",portServer);
 			System.out.println("eyyy2");
 			dataIn = new DataInputStream(sServer.getInputStream());
 			System.out.println("eyyy3");

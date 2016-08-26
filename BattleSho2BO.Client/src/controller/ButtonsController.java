@@ -70,7 +70,6 @@ public class ButtonsController implements ActionListener{
 				
 		}
 		
-		
 		if(e.getActionCommand().equals("OK1")){
 			
 			System.out.println("BOTO OK APRETAT");
@@ -124,12 +123,12 @@ public class ButtonsController implements ActionListener{
 			
 		}
 		
-		if(Integer.parseInt(e.getActionCommand()) < 1000){
+		/*if(Integer.parseInt(e.getActionCommand()) < 1000){
 			if(partida.getEstat().equals("CREA FLOTA")){
 				partida.setVaixell(Integer.parseInt(e.getActionCommand()));
 			}
 			
-		}
+		}*/
 		
 	}
 	
