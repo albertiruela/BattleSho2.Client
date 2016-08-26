@@ -16,6 +16,8 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 
+import javax.swing.JOptionPane;
+
 import model.Partida;
 import model.Taulell;
 import network.ComunicacioServidor;
@@ -81,6 +83,7 @@ public class ButtonsController implements ActionListener{
 				
 			//}else{
 			//	viewClient.updateEstat("No has pogut accedir");
+				//JOptionPane.showMessageDialog(null, "NICKNAME O CONTRASSENYA EQUIVOCATS","ERROR AL ACCEDIR", JOptionPane.ERROR_MESSAGE);
 			//}
 			
 		}
@@ -95,6 +98,7 @@ public class ButtonsController implements ActionListener{
 				
 			}else{
 				viewClient.updateEstat("No has pogut ser registrat");
+				JOptionPane.showMessageDialog(null, "NOM JA ESCOLLIT O CONTRASSENYA EQUIVOCADA","ERROR AL REGISTRAR", JOptionPane.ERROR_MESSAGE);
 			}
 			
 		}
