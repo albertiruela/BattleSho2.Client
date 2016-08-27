@@ -39,17 +39,19 @@ public class ComunicacioServidor extends Thread {
 	}
 	
 	
-	/**  */
+	/** 
+	 * funció amb la que enviem les dades de l'usuari per a enregistrar-lo
+	 * @param message
+	 * @return booleà per a validar si s'ha registrat correctament
+	 */
 	public boolean sendUsuariARegistrar (String message){
-		System.out.println("eyyy2");
+		
 			
 		Boolean connexio = false; 
 		try {
 			System.out.println(portServer);
 			sServer = new Socket("127.0.0.1",portServer);
-			System.out.println("eyyy2");
 			dataIn = new DataInputStream(sServer.getInputStream());
-			System.out.println("eyyy3");
 			dataOut = new DataOutputStream(sServer.getOutputStream());
 			dataOut.writeUTF(message);
 			System.out.println(message);
@@ -72,15 +74,20 @@ public class ComunicacioServidor extends Thread {
 		} catch (UnknownHostException e) {
 			connexio = false;
 			System.out.println("NO ES POT CONNECTAR 1");
-			//controller.makeDialog("Coudn't connect with server", false);
+			
 		} catch (IOException e) {
 			connexio = false;
 			System.out.println("NO ES POT CONNECTAR 2");
-			//controller.makeDialog("Coudn't connect with server", false);
+			
 		}
 		return connexio;
 	}
-			
+	
+	/**
+	 * En aquesta funció enviar informació per a veure si l'usuari existeix i te el password correcte
+	 * @param message nickname i password separats per una '/'
+	 * @return boolea de si existeix l'usuari i pot accedir
+	 */
 	public boolean sendUsuariAccedir (String message){
 		Boolean connexio = false; 
 		try {

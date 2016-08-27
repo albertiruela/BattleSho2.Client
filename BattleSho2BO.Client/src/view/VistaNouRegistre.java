@@ -18,41 +18,39 @@ import javax.swing.JLabel;
 
 import controller.ButtonsController;
 
-// TODO: Auto-generated Javadoc
 /**
- * The Class VistaNouRegistre.
+ * Classe que demana el registre del usuari
  */
 public class VistaNouRegistre extends JDialog {
 	
-	/** The content panel. */
+	/** Panell principal */
 	private final JPanel contentPanel = new JPanel();
 	
-	/** The jp accedir. */
+	/** Panell on posarem les labels, els textfields i el boto  */
 	private JPanel jpAccedir = new JPanel (new GridLayout(3,2));
 	
-	/** The jl nickname. */
+	/** Label del nickname. */
 	private JLabel jlNickname = new JLabel("    NICKNAME");
 	
-	/** The jl password. */
+	/** Label de la password. */
 	private JLabel jlPassword = new JLabel("    PASSWORD");
 	
-	/** The jl res. */
 	private JLabel jlRes = new JLabel (" ");
 	
-	/** The jtf nickname. */
+	/** captem el nickname. */
 	private JTextField jtfNickname = new JTextField();
 	
-	/** The jpf password. */
+	/** captem la password. */
 	private JPasswordField jpfPassword = new JPasswordField();
 	
 	
-	/** The jb OK. */
+	/** boto de validacio OK. */
 	private JButton jbOK = new JButton("OK");
 
 		
 	
 	/**
-	 * Instantiates a new vista nou registre.
+	 * Instancia a la creacio del registre
 	 */
 	public VistaNouRegistre(){
 		
@@ -77,7 +75,7 @@ public class VistaNouRegistre extends JDialog {
 	/**
 	 * Register controllers.
 	 *
-	 * @param controller the controller
+	 * @param controlador
 	 */
 	public void registerControllers(ButtonsController controller){
 		
@@ -87,18 +85,18 @@ public class VistaNouRegistre extends JDialog {
 	}
 	
 	/**
-	 * Gets the nickname.
+	 * retorna el nickname.
 	 *
-	 * @return the nickname
+	 * @return nickname
 	 */
 	public String getNickname(){
 		return jtfNickname.getText();
 	}
 	
 	/**
-	 * Gets the pasword.
+	 * Retorna el pasword.
 	 *
-	 * @return the pasword
+	 * @return pasword
 	 */
 	public String getPasword(){
 		return jpfPassword.getText();

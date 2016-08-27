@@ -19,41 +19,36 @@ import controller.ButtonsController;
 
 
 
-// TODO: Auto-generated Javadoc
 /**
- * The Class VistaAccedirC.
+ * Vista encarregada de capturar el nickname i el password per a obrir sessio
  */
 public class VistaAccedirC extends JDialog {
 
-	/** The content panel. */
+	/** Panell principal*/
 	private final JPanel contentPanel = new JPanel();
 	
-	/** The jp accedir. */
+	/** Panell on es demana nickname i password */
 	private JPanel jpAccedir = new JPanel (new GridLayout(3,2));
 	
-	/** The jl nickname. */
+	/** Label adjunt a demanar nickname*/
 	private JLabel jlNickname = new JLabel("    NICKNAME");
 	
-	/** The jl password. */
+	/** Label adjunt a demanar el password*/
 	private JLabel jlPassword = new JLabel("    PASSWORD");
 
-	/** The jl res. */
 	private JLabel jlRes = new JLabel (" ");
 	
-	/** The jtf nickname. */
+	/** casella on captarem el nickname */
 	private JTextField jtfNickname = new JTextField();
 	
-	/** The jpf password. */
+	/** casella on captarem el password */
 	private JPasswordField jpfPassword = new JPasswordField();
 
-	
-	
-	/** The jb OK. */
+	/** Boto de validacio */
 	private JButton jbOK = new JButton("OK");
 	
-	
 	/**
-	 * Instantiates a new vista accedir C.
+	 * Instancia a crear la vista accedir
 	 */
 	public VistaAccedirC(){
 		
@@ -78,7 +73,7 @@ public class VistaAccedirC extends JDialog {
 	/**
 	 * Register controllers.
 	 *
-	 * @param controller the controller
+	 * @param passem el controlador
 	 */
 	public void registerControllers(ButtonsController controller){
 		
@@ -88,18 +83,18 @@ public class VistaAccedirC extends JDialog {
 	}
 	
 	/**
-	 * Gets the nickname.
+	 * Capta el nickname.
 	 *
-	 * @return the nickname
+	 * @return nickname
 	 */
 	public String getNickname(){
 		return jtfNickname.getText();
 	}
 	
 	/**
-	 * Gets the pasword.
+	 * Capta el passworf
 	 *
-	 * @return the pasword
+	 * @return pasword
 	 */
 	public String getPasword(){
 		return jpfPassword.getText();

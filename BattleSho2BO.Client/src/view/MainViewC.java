@@ -29,68 +29,62 @@ import java.awt.event.ActionListener;
 
 // TODO: Auto-generated Javadoc
 /**
- * The Class MainViewC.
+ * Classe principal de la vista que fara de menu per a fer qualsevol de les opcions disponibles des del client
  */
 public class MainViewC extends JFrame {
 
-	/** The content pane. */
+	/** Panell principal */
 	private JPanel contentPane;
 	
-	/** The jp titol 1. */
+	/** Panell on introduirem el titol principal */
 	private JPanel jpTitol1 = new JPanel();
 	
-	/** The jp titol 2. */
+	/**Panell on introduirem el Subtitol de la vista  */
 	private JPanel jpTitol2 = new JPanel(new FlowLayout());
 	
-	/** The jp botons. */
+	/** Panell on introduirem els botons*/
 	private JPanel jpBotons = new JPanel (new GridLayout(2,3));
 	
-	/** The jp estat. */
+	/** panell on notificarem  */
 	private JPanel jpEstat = new JPanel (new FlowLayout());
 	
-	/** The jp sessio. */
-	private JPanel jpSessio = new JPanel();
 	
 	
 	
-	/** The jb registre. */
+	
+	/** Boto de registre */
 	private JButton jbRegistre = new JButton("Nou Registre");
 	
-	/** The jb accedir. */
+	/** Boto d'accedir*/
 	private JButton jbAccedir = new JButton("Accedir");
 	
-	/** The jb jugar. */
+	/** Boto per jugar*/
 	private JButton jbJugar = new JButton("Jugar");
 	
-	/** The jb sessio. */
+	/** Boto tancar sessio */
 	private JButton jbSessio = new JButton("Tancar Sessió");
-	
-	/** The jb res. */
+
 	private JButton jbRes = new JButton("");
 	
-	/** The jb res 1. */
 	private JButton jbRes1 = new JButton("");
 	
-	
-	/** The jl battle. */
+	/** Label on afegirem el titol principal */
 	private JLabel jlBattle = new JLabel("BattleSho2");
 	
-	/** The jl client. */
+	/** Label on afegirem el subtitol */
 	private JLabel jlClient = new JLabel ("CLIENT");
 	
-	/** The jl estat. */
+	/** Label on afegim l'Estat del registre i accès */
 	private JLabel jlEstat = new JLabel ("");
 	
-	//Comentari random :D
+	
 	
 	
 	/**
-	 * Instantiates a new main view C.
+	 * Instanciem la creació de la vista principal
 	 */
 	public MainViewC() {
 		
-		
-
 		jlBattle.setFont(new java.awt.Font("Courier New", 1, 40));
 		jlBattle.setForeground(Color.BLUE);
 		jpTitol1.add(jlBattle);
@@ -145,9 +139,9 @@ public class MainViewC extends JFrame {
 	}
 	
 	/**
-	 * Register controller.
+	 * Registrem els controladors 
 	 *
-	 * @param controller the controller
+	 * @param el controladel dels botons
 	 */
 	public void registerController(ButtonsController controller){
 		
@@ -168,7 +162,7 @@ public class MainViewC extends JFrame {
 	}
 
 	/**
-	 * Update estat.
+	 * Actualitza el Estat
 	 *
 	 * @param message the message
 	 */
@@ -178,7 +172,7 @@ public class MainViewC extends JFrame {
 	}
 	
 	/**
-	 * Pots jugar.
+	 * Activa els botons de tancar sessio i el de poder jugar
 	 */
 	public void potsJugar(){
 		jbJugar.setVisible(true);
@@ -186,7 +180,7 @@ public class MainViewC extends JFrame {
 	}
 	
 	/**
-	 * No pots jugar.
+	 * Inhabilita el boto de jugar
 	 */
 	public void noPotsJugar(){
 		jbJugar.setVisible(false);
