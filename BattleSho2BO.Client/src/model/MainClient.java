@@ -23,12 +23,12 @@ import model.Configuracio;
 
 
 /**
- * The Class MainClient.
+ * La classe Client és dés d'on executarem el programa, crearem les vistes principals, crearem el controlador, les comunicacions i decidirem quines vistes mostrem al iniciar el programa
  */
 public class MainClient {
 	
 	/**
-	 * The main method.
+	 * Iniciem la funcio de la configuració i iniciem tot amb el run
 	 *
 	 * @param args the arguments
 	 */
