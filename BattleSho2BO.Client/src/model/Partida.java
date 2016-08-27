@@ -1,14 +1,28 @@
 package model;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class Partida.
+ */
 public class Partida {
 
+	/** The estat. */
 	String estat = new String();
 	
+	/** The usuari. */
 	Taulell usuari = new Taulell();
+	
+	/** The oponent. */
 	Taulell oponent = new Taulell();
 	
+	/** The num V. */
 	int numV;
 	
+	/**
+	 * Instantiates a new partida.
+	 *
+	 * @param taulell the taulell
+	 */
 	public Partida(Taulell taulell){
 		oponent = taulell;
 		usuari.setDificultat(oponent.getDificultat());
@@ -35,14 +49,30 @@ public class Partida {
 		//}
 	}
 
+	/**
+	 * Gets the estat.
+	 *
+	 * @return the estat
+	 */
 	public String getEstat() {
 		return estat;
 	}
 
+	/**
+	 * Sets the estat.
+	 *
+	 * @param estat the new estat
+	 */
 	public void setEstat(String estat) {
 		this.estat = estat;
 	}
 	
+	/**
+	 * Sets the vaixell.
+	 *
+	 * @param posicio the posicio
+	 * @return true, if successful
+	 */
 	public boolean setVaixell(int posicio){
 		int i = posicio/oponent.getFiles();
 		int j = posicio%oponent.getColumnes();

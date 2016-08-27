@@ -21,8 +21,17 @@ import view.VistaPartida;
 import model.Configuracio;
 
 
+
+/**
+ * The Class MainClient.
+ */
 public class MainClient {
 	
+	/**
+	 * The main method.
+	 *
+	 * @param args the arguments
+	 */
 	public static void main(String[] args) {
 		
 		SwingUtilities.invokeLater(new Runnable(){

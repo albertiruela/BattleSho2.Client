@@ -120,7 +120,6 @@ public class ComunicacioServidor extends Thread {
 	}
 	
 	public String sendDemanaMapes(String message){
-		
 		String answer = new String();
 		boolean connexio = false;
 		try {

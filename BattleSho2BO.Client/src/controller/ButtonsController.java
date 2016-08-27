@@ -27,17 +27,41 @@ import view.VistaNouRegistre;
 import view.VistaPartida;
 
 
+// TODO: Auto-generated Javadoc
+/**
+ * En aquesta classe crontolem tots els botons referents a la vista del client
+ */
 public class ButtonsController implements ActionListener{
 	
+	/** Declarem la vista del cient */
 	private static MainViewC viewClient;
+	
+	/** Declarem la vista per a accedir al sistema*/
 	private VistaAccedirC vistaAccedir;
+	
+	/** Declarem la vista del registre*/
 	private VistaNouRegistre vistaRegistre;
+	
+	/** Declarem la vista referent a la partida */
 	private VistaPartida vistaPartida;
+	
+	/** Declarem la classe que ens comunica amb el servidor*/
 	private static ComunicacioServidor comunicacioS;
 	
+	/** El taulell de la partida */
 	private Taulell taulell = new Taulell();
+	
+	/** La classe que gestiona la partida */
 	private Partida partida;
 	
+	/**
+	 * El constructor del controlador de botons on passem totes les vistes i la comunicació
+	 *
+	 * @param viewClient 
+	 * @param vistaAccedir  
+	 * @param vistaPartida 
+	 * @param comunicacioS 
+	 */
 	public ButtonsController(MainViewC viewClient, VistaAccedirC vistaAccedir, VistaNouRegistre vistaRegistre, VistaPartida vistaPartida, ComunicacioServidor comunicacioS){
 		
 		this.viewClient = viewClient;
@@ -48,6 +72,9 @@ public class ButtonsController implements ActionListener{
 		
 	}
 	
+	/**
+	 * En funció de les comandes que arriben dels JButtons efectuem una acció o una altre
+	 */
 	public void actionPerformed (ActionEvent e){
 		
 		String message = new String();
