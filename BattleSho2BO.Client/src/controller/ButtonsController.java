@@ -23,6 +23,7 @@ import javax.swing.JOptionPane;
 import model.Contrincant;
 import model.Partida;
 import model.Taulell;
+import model.Time;
 import network.ComunicacioServidor;
 import view.MainViewC;
 import view.VistaAccedirC;
@@ -58,6 +59,8 @@ public class ButtonsController implements ActionListener{
 	
 	/** La classe que gestiona la partida */
 	private Partida partida;
+	
+	private Time time;
 	
 	/**
 	 * El constructor del controlador de botons on passem totes les vistes i la comunicació
@@ -103,9 +106,7 @@ public class ButtonsController implements ActionListener{
 		
 		if(e.getActionCommand().equals("OK1")){
 			
-			System.out.println("BOTO OK APRETAT");
 			message = "LOG:"+vistaAccedir.getNickname()+"/"+vistaAccedir.getPasword();
-			System.out.println(message);
 			if(comunicacioS.sendUsuariAccedir(message)){
 				viewClient.updateEstat("Has accedit correctament!");
 				viewClient.potsJugar();
@@ -120,7 +121,6 @@ public class ButtonsController implements ActionListener{
 		
 		if(e.getActionCommand().equals("OK2")){
 			
-			System.out.println("BOTO OK2 APRETAT");
 			message = "ADD:"+vistaRegistre.getNickname()+"/"+vistaRegistre.getPasword();
 			
 			if (comunicacioS.sendUsuariARegistrar(message)){
@@ -135,7 +135,6 @@ public class ButtonsController implements ActionListener{
 		
 		if(e.getActionCommand().equals("JUGAR")){
 			
-			System.out.println("boto jugar apretat");
 			
 			//mostrar vista amb els mapes a seleccionar
 			
@@ -163,6 +162,7 @@ public class ButtonsController implements ActionListener{
 			vistaPartida.newGameView(taulell);
 			vistaPartida.registerControllers(this);
 			
+			time = new Time(this);
 			partida = new Partida(taulell, this);
 			
 		}
@@ -203,11 +203,18 @@ public class ButtonsController implements ActionListener{
 	}
 	
 	public void partidaGuanyada(int punts){
-		System.out.println("controller guanyat");
 		comunicacioS.sendPartidaGuanyada("GUANYADA:"+punts);
 	}
 	
 	public void partidaPerduda(int punts){
 		comunicacioS.sendPartidaPerduda("PERDUDA:"+punts);
+	}
+	
+	public void actualitzaPunts(int punts, boolean usuari){
+		vistaPartida.actualitzaPunts(punts, usuari);
+	}
+	
+	public void actualitzaTemps(int temps){
+		vistaPartida.actualitzaTemps(temps);
 	}
 }

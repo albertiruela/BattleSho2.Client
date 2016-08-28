@@ -208,7 +208,6 @@ public class Partida {
 						numV--;
 						aux = 0;
 						usuari.setVaixells4(vaixells4);
-						System.out.println("baixell de 4 colocat");
 					}
 					
 				}
@@ -291,7 +290,6 @@ public class Partida {
 						numV--;
 						aux = 0;
 						usuari.setVaixells3(vaixells3);
-						System.out.println("vaixell de 3 colocat");
 					}
 				}
 			}else if(v2 != 0){
@@ -346,14 +344,12 @@ public class Partida {
 						numV--;
 						aux = 0;
 						usuari.setVaixells2(vaixells2);
-						System.out.println("vaixell de 2 colocat");
 					}
 				}
 			}
 		}
 		
 		if(numV == 0){
-			System.out.println("Flota Preparada!");
 			oponent.ompleVaixells();
 			estat = "TORN USUARI";
 		}
@@ -399,14 +395,11 @@ public class Partida {
 				}else{
 					estat = "TORN USUARI";
 				}
-				System.out.println(puntsU);
-				System.out.println(estat);
+				
 			}else if(oponent.getTaulell()[i][j] == '-'){
-				System.out.println("aigua");
 				controller.pintaCasella('A', i, j, false);
 				puntsU-=10;
 				estat = "TORN OPONENT";
-				System.out.println(oponent.getDificultat());
 				switch(oponent.getDificultat()){
 				case 1:
 					tornFacil();
@@ -422,8 +415,6 @@ public class Partida {
 		}else{
 			int i = (posicio)/oponent.getFiles();
 			int j = (posicio)%oponent.getColumnes();
-			System.out.println(i);
-			System.out.println(j);
 			
 			if(usuari.getTaulell()[i][j] == 'V'){
 				
@@ -456,7 +447,6 @@ public class Partida {
 					controller.partidaPerduda(puntsU);
 				}else{
 					estat = "TORN OPONENT";
-					System.out.println(estat);
 					switch(oponent.getDificultat()){
 					case 1:
 						tornFacil();
@@ -471,7 +461,6 @@ public class Partida {
 				}
 				
 			}else if(usuari.getTaulell()[i][j] == '-'){
-				System.out.println("aigua");
 				controller.pintaCasella('A', i, j, true);
 				puntsO-=10;
 				estat = "TORN USUARI";
@@ -491,16 +480,19 @@ public class Partida {
 				puntsU+=100;
 				usuari.setN_vaixells_petits(usuari.getN_vaixells_petits()-1);
 				usuari.setvTotals(usuari.getvTotals()-1);
+				controller.actualitzaPunts(puntsU, u);
 				break;
 			case 1:
 				puntsU+=75;
 				usuari.setN_vaixells_mitjans(usuari.getN_vaixells_mitjans()-1);
 				usuari.setvTotals(usuari.getvTotals()-1);
+				controller.actualitzaPunts(puntsU, u);
 				break;
 			case 2:
 				puntsU+=50;
 				usuari.setN_vaixells_grans(usuari.getN_vaixells_grans()-1);
 				usuari.setvTotals(usuari.getvTotals()-1);
+				controller.actualitzaPunts(puntsU, u);
 				break;
 			}
 		}else{
@@ -509,16 +501,19 @@ public class Partida {
 				puntsO+=100;
 				oponent.setN_vaixells_petits(oponent.getN_vaixells_petits()-1);
 				oponent.setvTotals(oponent.getvTotals()-1);
+				controller.actualitzaPunts(puntsU, u);
 				break;
 			case 1:
 				puntsO+=75;
 				oponent.setN_vaixells_mitjans(oponent.getN_vaixells_mitjans()-1);
 				oponent.setvTotals(oponent.getvTotals()-1);
+				controller.actualitzaPunts(puntsU, u);
 				break;
 			case 2:
 				puntsO+=50;
 				oponent.setN_vaixells_grans(oponent.getN_vaixells_grans()-1);
 				oponent.setvTotals(oponent.getvTotals()-1);
+				controller.actualitzaPunts(puntsU, u);
 				break;
 			}
 		}
@@ -560,7 +555,6 @@ public class Partida {
 	public int getMaxJ(Point[] vaixells){
 		int max = 0;
 		for(int i=0;i<vaixells.length;i++){
-			System.out.println(i);
 			if(vaixells[i] != null && vaixells[i].y > max){
 				max = vaixells[i].y;
 			}
@@ -588,7 +582,6 @@ public class Partida {
 		int posicio = r.nextInt((usuari.getFiles()*usuari.getColumnes())-1);
 		Point p = new Point((posicio)/oponent.getFiles(), (posicio)%oponent.getColumnes());
 		while(posicions.contains(p)){
-			System.out.println("while");
 			posicio = r.nextInt((usuari.getFiles()*usuari.getColumnes())-1);
 			p.x = (posicio)/oponent.getFiles();
 			p.y = (posicio)%oponent.getColumnes();
@@ -601,7 +594,6 @@ public class Partida {
 		Random r = new Random();
 		
 		if(!vaixellTrobat){
-			System.out.println("vaixell no trobat");
 			int posicio = r.nextInt((usuari.getFiles()*usuari.getColumnes())-1);
 			Point p = new Point((posicio)/oponent.getFiles(), (posicio)%oponent.getColumnes());
 			while(posicions.contains(p)){
@@ -612,7 +604,6 @@ public class Partida {
 			posicions.add(p);
 			comprovaVaixell(posicio, false);
 		}else{
-			System.out.println("vaixell trobat");
 			Point p = new Point();
 			int posicio;
 			int aux = 0;

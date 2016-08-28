@@ -57,11 +57,11 @@ public class ComunicacioServidor extends Thread {
 			
 		Boolean connexio = false; 
 		try {
-			System.out.println(portServer);
+			
 			sServer = new Socket("127.0.0.1",portServer);
 			dataOut = new ObjectOutputStream(sServer.getOutputStream());
 			dataOut.writeObject(message);
-			System.out.println(message);
+			
 				
 			String answer = new String();
 			try {
@@ -74,7 +74,7 @@ public class ComunicacioServidor extends Thread {
 			if(answer.equals("OK")){
 				connexio = true;
 			}else{
-				System.out.println("fail");
+				
 				connexio = false;
 					
 			}
@@ -86,11 +86,9 @@ public class ComunicacioServidor extends Thread {
 			
 		} catch (UnknownHostException e) {
 			connexio = false;
-			System.out.println("NO ES POT CONNECTAR 1");
 			
 		} catch (IOException e) {
 			connexio = false;
-			System.out.println("NO ES POT CONNECTAR 2");
 			
 		}
 		return connexio;
@@ -106,11 +104,8 @@ public class ComunicacioServidor extends Thread {
 		try {
 				
 			sServer = new Socket("127.0.0.1",portServer);
-			System.out.println("eyyy2");
-			System.out.println("eyyy3");
 			dataOut = new ObjectOutputStream(sServer.getOutputStream());
 			dataOut.writeObject(message);
-			System.out.println(message);
 				
 			String answer = new String();
 			try {
@@ -133,10 +128,8 @@ public class ComunicacioServidor extends Thread {
 			
 		} catch (UnknownHostException e) {
 			connexio = false;
-			System.out.println("NO ES POT CONNECTAR 1");
 		} catch (IOException e) {
 			connexio = false;
-			System.out.println("NO ES POT CONNECTAR 2");
 			
 	}
 		
@@ -150,20 +143,12 @@ public class ComunicacioServidor extends Thread {
 		boolean connexio = false;
 		try {
 			sServer = new Socket("127.0.0.1",portServer);
-			System.out.println("eyyy2");
 			
-			System.out.println("eyyy3");
 			dataOut = new ObjectOutputStream(sServer.getOutputStream());
 			dataOut.writeObject(message);
-			System.out.println(message);
 			
 			dataIn = new ObjectInputStream(sServer.getInputStream());
 			cont = (LinkedList<Contrincant>) dataIn.readObject();
-		
-			System.out.println("AQUI TAMBEEEEEE");
-			
-			
-			
 			
 			dataOut.close();
 			dataIn.close();
@@ -172,10 +157,8 @@ public class ComunicacioServidor extends Thread {
 		
 		} catch (UnknownHostException e) {
 			connexio = false;
-			System.out.println("NO ES POT CONNECTAR 1");
 		} catch (IOException e) {
 			connexio = false;
-			System.out.println("NO ES POT CONNECTAR 2");
 			e.printStackTrace();
 		}
 	
@@ -188,11 +171,8 @@ public class ComunicacioServidor extends Thread {
 		try {
 				
 			sServer = new Socket("127.0.0.1",portServer);
-			System.out.println("eyyy2");
-			System.out.println("eyyy3");
 			dataOut = new ObjectOutputStream(sServer.getOutputStream());
 			dataOut.writeObject(message);
-			System.out.println(message);
 				
 			String answer = new String();
 			try {
@@ -211,10 +191,8 @@ public class ComunicacioServidor extends Thread {
 			
 		} catch (UnknownHostException e) {
 			connexio = false;
-			System.out.println("NO ES POT CONNECTAR 1");
 		} catch (IOException e) {
 			connexio = false;
-			System.out.println("NO ES POT CONNECTAR 2");
 			
 		}
 		
@@ -226,11 +204,10 @@ public class ComunicacioServidor extends Thread {
 		try {
 				
 			sServer = new Socket("127.0.0.1",portServer);
-			System.out.println("eyyy2");
-			System.out.println("eyyy3");
+			
 			dataOut = new ObjectOutputStream(sServer.getOutputStream());
 			dataOut.writeObject(message);
-			System.out.println(message);
+			
 				
 			String answer = new String();
 			try {
@@ -248,10 +225,10 @@ public class ComunicacioServidor extends Thread {
 			
 		} catch (UnknownHostException e) {
 			connexio = false;
-			System.out.println("NO ES POT CONNECTAR 1");
+			
 		} catch (IOException e) {
 			connexio = false;
-			System.out.println("NO ES POT CONNECTAR 2");
+			
 		}
 		return connexio;
 	}

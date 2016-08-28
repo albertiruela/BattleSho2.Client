@@ -24,6 +24,12 @@ public class VistaPartida extends JFrame{
 	/** Panell amb la puntuació*/
 	JPanel jpScore = new JPanel();
 	
+	JLabel jlPuntsU = new JLabel("Puntuacio Usuari: 0");
+	
+	JLabel jlPuntsO = new JLabel("Puntuacio Oponent: 0");
+	
+	JLabel jlTemps = new JLabel("00:00:00");
+	
 	/**  */
 	JPanel jpMap = new JPanel();
 	
@@ -59,7 +65,9 @@ public class VistaPartida extends JFrame{
 		getContentPane().setLayout(new BoxLayout(this.getContentPane(), BoxLayout.PAGE_AXIS));
 		
 		//crear panell amb puntuacions
-		jpScore.add(new JLabel("prova score"));
+		jpScore.add(jlPuntsU);
+		jpScore.add(jlPuntsO);
+		jpScore.add(jlTemps);
 		
 		jpMap.setLayout(new BoxLayout(jpMap, BoxLayout.LINE_AXIS));
 		
@@ -154,5 +162,37 @@ public class VistaPartida extends JFrame{
 		}else{
 			arrayOp[i][j].setBackground(Color.BLACK);
 		}
+	}
+	
+	public void actualitzaPunts(int punts, boolean u){
+		if(u){
+			jlPuntsU.setText("Puntuacio Usuari : "+punts);
+		}else{
+			jlPuntsO.setText("Puntuacio Oponent: "+punts);
+		}
+	}
+	
+	public void actualitzaTemps(int temps){
+		String print = new String();
+		String hour = new String();
+		String min = new String();
+		String sec = new String();
+		if(temps/3600<10){
+			hour = "0"+temps/3600+":";
+		}else{
+			hour = temps/3600+":";
+		}
+		if((temps%3600)/60<10){
+			min = "0"+(temps%3600)/60+":";
+		}else{
+			min = (temps%3600)/60+":";
+		}
+		if((temps%3600)%60<10){
+			sec = "0"+(temps%3600)%60+" ";
+		}else{
+			sec = (temps%3600)%60+" ";
+		}
+		
+		jlTemps.setText("Temps de partida: "+hour+":"+min+":"+sec);
 	}
 }
