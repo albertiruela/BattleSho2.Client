@@ -8,7 +8,7 @@ import java.util.Random;
 import controller.ButtonsController;
 
 
-// TODO: Auto-generated Javadoc
+
 /**
  *Classe des d'on gestionem la partida 
  * @author Albert
@@ -208,6 +208,7 @@ public class Partida {
 						numV--;
 						aux = 0;
 						usuari.setVaixells4(vaixells4);
+
 					}
 					
 				}
@@ -290,6 +291,7 @@ public class Partida {
 						numV--;
 						aux = 0;
 						usuari.setVaixells3(vaixells3);
+
 					}
 				}
 			}else if(v2 != 0){
@@ -604,6 +606,7 @@ public class Partida {
 			posicions.add(p);
 			comprovaVaixell(posicio, false);
 		}else{
+
 			Point p = new Point();
 			int posicio;
 			int aux = 0;

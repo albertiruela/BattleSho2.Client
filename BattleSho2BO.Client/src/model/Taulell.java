@@ -50,15 +50,15 @@ public class Taulell implements Serializable{
 		linia = b.readLine();
 		n_vaixells_petits = Integer.parseInt(linia);
 		vaixells2 = new Point[n_vaixells_petits][2];
-		//System.out.println(linia);
+		
 		linia = b.readLine();
 		n_vaixells_mitjans = Integer.parseInt(linia);
 		vaixells3 = new Point[n_vaixells_mitjans][3];
-		//System.out.println(linia);
+		
 		linia = b.readLine();
 		n_vaixells_grans = Integer.parseInt(linia);
 		vaixells4 = new Point[n_vaixells_grans][4];
-		//System.out.println(linia);
+		
 		
 		vTotals = n_vaixells_petits+n_vaixells_mitjans+n_vaixells_grans;
 		
@@ -182,7 +182,6 @@ public class Taulell implements Serializable{
 											vaixells4[v4-1][3] = new Point(i,j+3);
 											v4--;
 											nV--;
-			
 										}else{
 											vaixells3[v3-1][0] = new Point(i,j);
 											vaixells3[v3-1][1] = new Point(i,j+1);

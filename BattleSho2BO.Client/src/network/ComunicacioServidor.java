@@ -135,7 +135,12 @@ public class ComunicacioServidor extends Thread {
 		
 	return connexio;
 	}
-	
+	/**
+	 * Enviem peticio de que ens retornin els contrincants
+	 * @param message
+	 * @return
+	 * @throws ClassNotFoundException
+	 */
 	@SuppressWarnings("unchecked")
 	public static LinkedList<Contrincant> sendDemanaMapes(String message) throws ClassNotFoundException {
 		LinkedList<Contrincant> cont = new LinkedList<Contrincant>();
@@ -143,7 +148,6 @@ public class ComunicacioServidor extends Thread {
 		boolean connexio = false;
 		try {
 			sServer = new Socket("127.0.0.1",portServer);
-			
 			dataOut = new ObjectOutputStream(sServer.getOutputStream());
 			dataOut.writeObject(message);
 			
@@ -165,7 +169,11 @@ public class ComunicacioServidor extends Thread {
 	
 		return cont;
 	}
-	
+	/**
+	 * Enviem notificacio conforme hem guanyat la partida
+	 * @param message
+	 * @return
+	 */
 	public boolean sendPartidaGuanyada (String message){
 		Boolean connexio = false; 
 		try {
@@ -198,7 +206,11 @@ public class ComunicacioServidor extends Thread {
 		
 		return connexio;
 	}
-		
+	/**
+	 * Enviem notificacio conforme hem perdut la partida
+	 * @param message
+	 * @return
+	 */
 	public boolean sendPartidaPerduda (String message){
 		Boolean connexio = false; 
 		try {

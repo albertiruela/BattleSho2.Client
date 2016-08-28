@@ -5,12 +5,6 @@ import java.awt.event.ActionListener;
 
 
 
-
-
-
-
-
-
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
@@ -107,6 +101,7 @@ public class ButtonsController implements ActionListener{
 		if(e.getActionCommand().equals("OK1")){
 			
 			message = "LOG:"+vistaAccedir.getNickname()+"/"+vistaAccedir.getPasword();
+
 			if(comunicacioS.sendUsuariAccedir(message)){
 				viewClient.updateEstat("Has accedit correctament!");
 				viewClient.potsJugar();
@@ -121,6 +116,7 @@ public class ButtonsController implements ActionListener{
 		
 		if(e.getActionCommand().equals("OK2")){
 			
+
 			message = "ADD:"+vistaRegistre.getNickname()+"/"+vistaRegistre.getPasword();
 			
 			if (comunicacioS.sendUsuariARegistrar(message)){
