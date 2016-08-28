@@ -61,11 +61,16 @@ public class ComunicacioServidor extends Thread {
 			sServer = new Socket("127.0.0.1",portServer);
 			dataIn = new ObjectInputStream(sServer.getInputStream());
 			dataOut = new ObjectOutputStream(sServer.getOutputStream());
-			dataOut.writeUTF(message);
+			dataOut.writeObject(message);
 			System.out.println(message);
 				
 			String answer = new String();
-			answer = dataIn.readUTF();
+			try {
+				answer = (String)dataIn.readObject();
+			} catch (ClassNotFoundException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 			if(answer.equals("OK")){
 				connexio = true;
 			}else{
@@ -105,11 +110,16 @@ public class ComunicacioServidor extends Thread {
 			dataIn = new ObjectInputStream(sServer.getInputStream());
 			System.out.println("eyyy3");
 			dataOut = new ObjectOutputStream(sServer.getOutputStream());
-			dataOut.writeUTF(message);
+			dataOut.writeObject(message);
 			System.out.println(message);
 				
 			String answer = new String();
-			answer = dataIn.readUTF();
+			try {
+				answer = (String) dataIn.readObject();
+			} catch (ClassNotFoundException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 			if(answer.equals("OK")){
 				connexio = true;
 			}else{
@@ -143,11 +153,11 @@ public class ComunicacioServidor extends Thread {
 			dataIn = new ObjectInputStream(sServer.getInputStream());
 			System.out.println("eyyy3");
 			dataOut = new ObjectOutputStream(sServer.getOutputStream());
-			dataOut.writeUTF(message);
+			dataOut.writeObject(message);
 			System.out.println(message);
 			
 			
-			
+			cont = (LinkedList<Contrincant>) dataIn.readObject();
 		
 			System.out.println("AQUI TAMBEEEEEE");
 			

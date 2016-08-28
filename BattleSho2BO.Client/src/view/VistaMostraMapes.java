@@ -60,7 +60,12 @@ public class VistaMostraMapes extends JDialog{
 		jbEscollir0.setVisible(false);
 		jbEscollir1.setVisible(true);
 		
-		//contrincants = ComunicacioServidor.sendDemanaMapes("MAPES");
+		try {
+			contrincants = ComunicacioServidor.sendDemanaMapes("MAPES");
+		} catch (ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		System.out.println("demana mapes");
 		jtTaula = fesTaula(contrincants);
 		add(jtTaula, BorderLayout.CENTER);
