@@ -103,9 +103,8 @@ public class ButtonsController implements ActionListener{
 		
 		if(e.getActionCommand().equals("OK1")){
 			
-			System.out.println("BOTO OK APRETAT");
 			message = "LOG:"+vistaAccedir.getNickname()+"/"+vistaAccedir.getPasword();
-			System.out.println(message);
+			
 			if(comunicacioS.sendUsuariAccedir(message)){
 				viewClient.updateEstat("Has accedit correctament!");
 				viewClient.potsJugar();
@@ -120,7 +119,7 @@ public class ButtonsController implements ActionListener{
 		
 		if(e.getActionCommand().equals("OK2")){
 			
-			System.out.println("BOTO OK2 APRETAT");
+			
 			message = "ADD:"+vistaRegistre.getNickname()+"/"+vistaRegistre.getPasword();
 			
 			if (comunicacioS.sendUsuariARegistrar(message)){
@@ -135,7 +134,7 @@ public class ButtonsController implements ActionListener{
 		
 		if(e.getActionCommand().equals("JUGAR")){
 			
-			System.out.println("boto jugar apretat");
+			
 			
 			//mostrar vista amb els mapes a seleccionar
 			
@@ -203,7 +202,7 @@ public class ButtonsController implements ActionListener{
 	}
 	
 	public void partidaGuanyada(int punts){
-		System.out.println("controller guanyat");
+		
 		comunicacioS.sendPartidaGuanyada("GUANYADA:"+punts);
 	}
 	

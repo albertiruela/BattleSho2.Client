@@ -50,18 +50,18 @@ public class Taulell implements Serializable{
 		linia = b.readLine();
 		n_vaixells_petits = Integer.parseInt(linia);
 		vaixells2 = new Point[n_vaixells_petits][2];
-		//System.out.println(linia);
+		
 		linia = b.readLine();
 		n_vaixells_mitjans = Integer.parseInt(linia);
 		vaixells3 = new Point[n_vaixells_mitjans][3];
-		//System.out.println(linia);
+		
 		linia = b.readLine();
 		n_vaixells_grans = Integer.parseInt(linia);
 		vaixells4 = new Point[n_vaixells_grans][4];
-		//System.out.println(linia);
+		
 		
 		vTotals = n_vaixells_petits+n_vaixells_mitjans+n_vaixells_grans;
-		System.out.println(vTotals);
+		
 		
 		linia = b.readLine();
 		taulell = new char[linia.length()][linia.length()];
@@ -76,7 +76,7 @@ public class Taulell implements Serializable{
 			}
 			fila++;
 			linia = b.readLine();
-			System.out.println(linia);
+			
 			
 			try{
 				if(linia.equals("1") || linia.equals("2") || linia.equals("3")){
@@ -84,7 +84,7 @@ public class Taulell implements Serializable{
 				}
 			}catch(NullPointerException ex){}
 		}
-		System.out.println(dificultat);
+		
 	}
 	
 	/**
@@ -185,21 +185,21 @@ public class Taulell implements Serializable{
 											vaixells4[v4-1][3] = new Point(i,j+3);
 											v4--;
 											nV--;
-											System.out.println("baixell 4");
+											
 										}else{
 											vaixells3[v3-1][0] = new Point(i,j);
 											vaixells3[v3-1][1] = new Point(i,j+1);
 											vaixells3[v3-1][2] = new Point(i,j+2);
 											v3--;
 											nV--;
-											System.out.println("baixell 3");
+											
 										}
 									}else{
 										vaixells2[v2-1][0] = new Point(i,j);
 										vaixells2[v2-1][1] = new Point(i,j+1);
 										v2--;
 										nV--;
-										System.out.println("baixell 2");
+										
 									}
 								}
 							}
@@ -219,21 +219,21 @@ public class Taulell implements Serializable{
 											vaixells4[v4-1][3] = new Point(i+3,j);
 											v4--;
 											nV--;
-											System.out.println("baixell 4");
+											
 										}else{
 											vaixells3[v3-1][0] = new Point(i,j);
 											vaixells3[v3-1][1] = new Point(i+1,j);
 											vaixells3[v3-1][2] = new Point(i+2,j);
 											v3--;
 											nV--;
-											System.out.println("baixell 3");
+											
 										}
 									}else{
 										vaixells2[v2-1][0] = new Point(i,j);
 										vaixells2[v2-1][1] = new Point(i+1,j);
 										v2--;
 										nV--;
-										System.out.println("baixell 2");
+										
 									}
 								}
 							}

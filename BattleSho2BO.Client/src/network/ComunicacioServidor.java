@@ -61,7 +61,7 @@ public class ComunicacioServidor extends Thread {
 			sServer = new Socket("127.0.0.1",portServer);
 			dataOut = new ObjectOutputStream(sServer.getOutputStream());
 			dataOut.writeObject(message);
-			System.out.println(message);
+			
 				
 			String answer = new String();
 			try {
@@ -110,7 +110,7 @@ public class ComunicacioServidor extends Thread {
 			System.out.println("eyyy3");
 			dataOut = new ObjectOutputStream(sServer.getOutputStream());
 			dataOut.writeObject(message);
-			System.out.println(message);
+			
 				
 			String answer = new String();
 			try {
@@ -150,20 +150,16 @@ public class ComunicacioServidor extends Thread {
 		boolean connexio = false;
 		try {
 			sServer = new Socket("127.0.0.1",portServer);
-			System.out.println("eyyy2");
 			
-			System.out.println("eyyy3");
+			
+			
 			dataOut = new ObjectOutputStream(sServer.getOutputStream());
 			dataOut.writeObject(message);
-			System.out.println(message);
+			
 			
 			dataIn = new ObjectInputStream(sServer.getInputStream());
 			cont = (LinkedList<Contrincant>) dataIn.readObject();
 		
-			System.out.println("AQUI TAMBEEEEEE");
-			
-			
-			
 			
 			dataOut.close();
 			dataIn.close();
@@ -188,11 +184,10 @@ public class ComunicacioServidor extends Thread {
 		try {
 				
 			sServer = new Socket("127.0.0.1",portServer);
-			System.out.println("eyyy2");
-			System.out.println("eyyy3");
+			
 			dataOut = new ObjectOutputStream(sServer.getOutputStream());
 			dataOut.writeObject(message);
-			System.out.println(message);
+			
 				
 			String answer = new String();
 			try {
@@ -226,11 +221,10 @@ public class ComunicacioServidor extends Thread {
 		try {
 				
 			sServer = new Socket("127.0.0.1",portServer);
-			System.out.println("eyyy2");
-			System.out.println("eyyy3");
+			
 			dataOut = new ObjectOutputStream(sServer.getOutputStream());
 			dataOut.writeObject(message);
-			System.out.println(message);
+			
 				
 			String answer = new String();
 			try {

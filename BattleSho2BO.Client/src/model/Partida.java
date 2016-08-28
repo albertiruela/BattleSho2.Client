@@ -8,7 +8,7 @@ import java.util.Random;
 import controller.ButtonsController;
 
 
-// TODO: Auto-generated Javadoc
+
 /**
  *Classe des d'on gestionem la partida 
  * @author Albert
@@ -208,7 +208,7 @@ public class Partida {
 						numV--;
 						aux = 0;
 						usuari.setVaixells4(vaixells4);
-						System.out.println("baixell de 4 colocat");
+						
 					}
 					
 				}
@@ -291,7 +291,7 @@ public class Partida {
 						numV--;
 						aux = 0;
 						usuari.setVaixells3(vaixells3);
-						System.out.println("vaixell de 3 colocat");
+						
 					}
 				}
 			}else if(v2 != 0){
@@ -346,7 +346,7 @@ public class Partida {
 						numV--;
 						aux = 0;
 						usuari.setVaixells2(vaixells2);
-						System.out.println("vaixell de 2 colocat");
+						
 					}
 				}
 			}
@@ -406,7 +406,7 @@ public class Partida {
 				controller.pintaCasella('A', i, j, false);
 				puntsU-=10;
 				estat = "TORN OPONENT";
-				System.out.println(oponent.getDificultat());
+				
 				switch(oponent.getDificultat()){
 				case 1:
 					tornFacil();
@@ -422,8 +422,7 @@ public class Partida {
 		}else{
 			int i = (posicio)/oponent.getFiles();
 			int j = (posicio)%oponent.getColumnes();
-			System.out.println(i);
-			System.out.println(j);
+			
 			
 			if(usuari.getTaulell()[i][j] == 'V'){
 				
@@ -471,7 +470,7 @@ public class Partida {
 				}
 				
 			}else if(usuari.getTaulell()[i][j] == '-'){
-				System.out.println("aigua");
+				
 				controller.pintaCasella('A', i, j, true);
 				puntsO-=10;
 				estat = "TORN USUARI";
@@ -560,7 +559,7 @@ public class Partida {
 	public int getMaxJ(Point[] vaixells){
 		int max = 0;
 		for(int i=0;i<vaixells.length;i++){
-			System.out.println(i);
+			
 			if(vaixells[i] != null && vaixells[i].y > max){
 				max = vaixells[i].y;
 			}
@@ -588,7 +587,6 @@ public class Partida {
 		int posicio = r.nextInt((usuari.getFiles()*usuari.getColumnes())-1);
 		Point p = new Point((posicio)/oponent.getFiles(), (posicio)%oponent.getColumnes());
 		while(posicions.contains(p)){
-			System.out.println("while");
 			posicio = r.nextInt((usuari.getFiles()*usuari.getColumnes())-1);
 			p.x = (posicio)/oponent.getFiles();
 			p.y = (posicio)%oponent.getColumnes();
@@ -612,7 +610,7 @@ public class Partida {
 			posicions.add(p);
 			comprovaVaixell(posicio, false);
 		}else{
-			System.out.println("vaixell trobat");
+			
 			Point p = new Point();
 			int posicio;
 			int aux = 0;
