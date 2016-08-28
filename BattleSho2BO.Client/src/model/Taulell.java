@@ -7,25 +7,31 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.io.Serializable;
 
-// TODO: Auto-generated Javadoc
 /**
- * The Class Taulell.
+ * Classe destinada a la creació del taulell
+ * @author Albert
+ *
  */
-public class Taulell implements Serializable{
-	
-	private char[][] taulell;
 
-	/** The n vaixells petits. */
+public class Taulell implements Serializable{
+	/**
+	 * matriu de caracters
+	 */
+	private char[][] taulell;
+	/** número de vaixell petits que llegim */
 	private int n_vaixells_petits;
 	private Point[][] vaixells2;
-	/** The n vaixells mitjans. */
+	/** número de vaixell mitjans que llegim */ 
 	private int n_vaixells_mitjans;
 	private Point[][] vaixells3;
-	/** The n vaixells grans. */
+	/** número de vaixell grans que llegim */
 	private int n_vaixells_grans;
 	private Point[][] vaixells4;
-	/** The dificultat. */
+	/** Dificultat de la partida */
 	private int dificultat;
+	/**
+	 * vaixells totals
+	 */
 	private int vTotals;
 	
 	
@@ -33,7 +39,7 @@ public class Taulell implements Serializable{
 	
 
 	/**
-	 * Carregar taulell.
+	 * Carreguem el taulell a partir del fitxer
 	 *
 	 * @throws IOException Signals that an I/O exception has occurred.
 	 */
@@ -81,27 +87,45 @@ public class Taulell implements Serializable{
 		System.out.println(dificultat);
 	}
 	
-
+	/**
+	 * Retorna els vaixells de dues caselles
+	 * @return
+	 */
 	public Point[][] getVaixells2() {
 		return vaixells2;
 	}
-
+	/**
+	 * col·loca vaixells de dues caselles
+	 * @param vaixells2
+	 */
 	public void setVaixells2(Point[][] vaixells2) {
 		this.vaixells2 = vaixells2;
 	}
-
+	/** 
+	 * col·loca vaixells de 3 caselles
+	 * @param vaixells3
+	 */
 	public void setVaixells3(Point[][] vaixells3) {
 		this.vaixells3 = vaixells3;
 	}
-
+	/**
+	 * col·loca vaixells de 4 caselles
+	 * @param vaixells4
+	 */
 	public void setVaixells4(Point[][] vaixells4) {
 		this.vaixells4 = vaixells4;
 	}
-
+	/**
+	 * Retorna número de vaixells total
+	 * @return int amb el numero de vaixells total
+	 */
 	public int getvTotals() {
 		return vTotals;
 	}
-
+	/**
+	 * fixa els vaixells totals
+	 * @param vTotals
+	 */
 	public void setvTotals(int vTotals) {
 		this.vTotals = vTotals;
 	}
@@ -117,7 +141,9 @@ public class Taulell implements Serializable{
 			System.out.println("\n");
 		}
 	}
-	
+	/**
+	 * Funció que servira per omplir els vaixells
+	 */
 	public void ompleVaixells(){
 		int caselles = 0;
 		boolean trobat = false;
@@ -220,7 +246,11 @@ public class Taulell implements Serializable{
 		}
 	}
 	
-	
+	/**
+	 * Funció per retornar els vaixells
+	 * @param i
+	 * @return
+	 */
 	public Point[][] getVaixells(int i) {
 		switch(i){
 		case 0:
@@ -232,7 +262,10 @@ public class Taulell implements Serializable{
 		}
 		return null;
 	}
-
+	/**
+	 * Retorna vaixells de 3
+	 * @return 
+	 */
 	public Point[][] getVaixells3() {
 		return vaixells3;
 	}
@@ -243,113 +276,123 @@ public class Taulell implements Serializable{
 
 		
 	/**
-	 * Gets the files.
+	 * Files del taulell
 	 *
-	 * @return the files
+	 * @return int amb les files
 	 */
 	public int getFiles(){
 		return taulell.length;
 	}
 	
 	/**
-	 * Gets the columnes.
+	 * Retorna les columnes
 	 *
-	 * @return the columnes
+	 * @return int amb les columnes
 	 */
 	public int getColumnes(){
 		return taulell[0].length;
 	}
-
+	/**
+	 * Retorna el taulell format
+	 * @return
+	 */
 	public char[][] getTaulell() {
 		return taulell;
 	}
-
+	/**
+	 * Fixa el taulell
+	 * @param taulell
+	 */
 	public void setTaulell(char[][] taulell) {
 		this.taulell = taulell;
 	}
 
 	/**
-	 * Gets the n vaixells petits.
+	 * Retorna els vaixells petits
 	 *
-	 * @return the n vaixells petits
+	 * @return n vaixells petits
 	 */
 	public int getN_vaixells_petits() {
 		return n_vaixells_petits;
 	}
 
 	/**
-	 * Sets the n vaixells petits.
+	 * fixa els vaixells petits
 	 *
-	 * @param n_vaixells_petits the new n vaixells petits
+	 * @param n_vaixells_petits 
 	 */
 	public void setN_vaixells_petits(int n_vaixells_petits) {
 		this.n_vaixells_petits = n_vaixells_petits;
 	}
 
 	/**
-	 * Gets the n vaixells mitjans.
+	 * Retorna els n vaixells mitjans
 	 *
-	 * @return the n vaixells mitjans
+	 * @return n vaixells mitjans
 	 */
 	public int getN_vaixells_mitjans() {
 		return n_vaixells_mitjans;
 	}
 
 	/**
-	 * Sets the n vaixells mitjans.
+	 * Fixa els vaixells mitjans
 	 *
-	 * @param n_vaixells_mitjans the new n vaixells mitjans
+	 * @param n_vaixells_mitjans 
 	 */
 	public void setN_vaixells_mitjans(int n_vaixells_mitjans) {
 		this.n_vaixells_mitjans = n_vaixells_mitjans;
 	}
 
 	/**
-	 * Gets the n vaixells grans.
+	 * Rep el numero de vaixells grans
 	 *
-	 * @return the n vaixells grans
+	 * @return  n vaixells grans
 	 */
 	public int getN_vaixells_grans() {
 		return n_vaixells_grans;
 	}
 
 	/**
-	 * Sets the n vaixells grans.
+	 * Fixa el numero de vaixells grans
 	 *
-	 * @param n_vaixells_grans the new n vaixells grans
+	 * @param n_vaixells_grans 
 	 */
 	public void setN_vaixells_grans(int n_vaixells_grans) {
 		this.n_vaixells_grans = n_vaixells_grans;
 	}
 
 	/**
-	 * Gets the dificultat.
+	 * Retorna la dificultat
 	 *
-	 * @return the dificultat
+	 * @return dificultat
 	 */
 	public int getDificultat() {
 		return dificultat;
 	}
 
 	/**
-	 * Sets the dificultat.
+	 * Fixa la dificultat
 	 *
-	 * @param dificultat the new dificultat
+	 * @param dificultat 
 	 */
 	public void setDificultat(int dificultat) {
 		this.dificultat = dificultat;
 	}
 
 	/**
-	 * Sets the vaixell.
+	 * Fixa el vaixella la posicio.
 	 *
-	 * @param i the i
-	 * @param j the j
+	 * @param i
+	 * @param j 
 	 */
 	public void setVaixell(int i, int j){
 		taulell[i][j] = 'V';
 	}
-	
+	/**
+	 * Fixa en blanc la posicio
+	 * @param i
+	 * @param j
+	 */
 	public void setBlanc(int i, int j){
 		taulell[i][j] = '-';
 	}

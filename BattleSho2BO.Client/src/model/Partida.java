@@ -10,43 +10,61 @@ import controller.ButtonsController;
 
 // TODO: Auto-generated Javadoc
 /**
- * The Class Partida.
+ *Classe des d'on gestionem la partida 
+ * @author Albert
+ *
  */
-
 public class Partida {
-
-
+	
+	/**
+	 * Controlador dels botons
+	 */
 	private ButtonsController controller;
-	
+	/**
+	 * 
+	 */
 	private String estat = new String("ON");
-	
+	/** Taulell del jugador */
 	private Taulell usuari = new Taulell();
+	/** Taulell de l'oponent */
 	private Taulell oponent = new Taulell();
-	
+	/** punts de l'usuari*/
 	private int puntsU = 0;
+	/** punts de l'oponent*/
 	private int puntsO = 0;
-	
+	/** num vaixells de dues caselles */
 	private int v2;
+	/** posiico dels vaixells de 2*/
 	private Point[][] vaixells2;
+	/** num vaixells de 3 caselles */
 	private int v3;
+	/** posicio vaixells de 3 caselles */
 	private Point[][] vaixells3;
+	/** num vaixells 4 caselles */
 	private int v4;
+	/** posicio vaixells 4 caselles*/
 	private Point[][] vaixells4;
 	
+	/** num total vaixells*/
 	private int numV;
 	private int aux = 0;
+	/** indica si el col·loquem en vertial */
 	private boolean vertical = true;
 	
+	/** Guardem on tenim els vaixells */
 	private LinkedList<Point> posicions = new LinkedList<Point>();
+	/** Boolea que indica si on pitgem hi ha vaixell*/
 	private boolean vaixellTrobat = false;
+	/** Si el trobem guardem el punt*/
 	private Point vaixellT = new Point();
+	/** Calcula el torn que portem de partida */
 	private int torn = 0;
 	
 	
 	/**
-	 * Instantiates a new partida.
+	 * Intancia una nova partida guardant les dades importants
 	 *
-	 * @param taulell the taulell
+	 * @param taulell i controlador
 	 */
 	public Partida(Taulell taulell, ButtonsController controller){
 		this.controller = controller;
@@ -80,16 +98,16 @@ public class Partida {
 	}
 
 	/**
-	 * Gets the estat.
+	 * Retorna el estat del joc 
 	 *
-	 * @return the estat
+	 * @return estat
 	 */
 	public String getEstat() {
 		return estat;
 	}
 
 	/**
-	 * Sets the estat.
+	 * Fixem l'estat
 	 *
 	 * @param estat the new estat
 	 */
@@ -98,10 +116,10 @@ public class Partida {
 	}
 	
 	/**
-	 * Sets the vaixell.
+	 * Carreguem els vaixells al taulell
 	 *
-	 * @param posicio the posicio
-	 * @return true, if successful
+	 * @param posicio 
+	 * @return boolea que indica si s'ha dit a terme
 	 */
 	public boolean setVaixell(int posicio){
 		int i = posicio/oponent.getFiles();
@@ -343,7 +361,11 @@ public class Partida {
 		return true;
 	}
 	
-	
+	/**
+	 * comprova si hi ha vaixell
+	 * @param posicio
+	 * @param tornUsuari
+	 */
 	public void comprovaVaixell(int posicio, boolean tornUsuari){
 		
 		if(tornUsuari){
@@ -457,7 +479,11 @@ public class Partida {
 		}
 	}
 	
-	
+	/**
+	 * Sumem els punts del torn en funció de quin tipus de vaixell toquem
+	 * @param vaixell
+	 * @param u
+	 */
 	public void sumaPunts(int vaixell, boolean u){
 		if(u){	
 			switch(vaixell){
@@ -498,7 +524,11 @@ public class Partida {
 		}
 	}
 	
-	
+	/**
+	 * Agafa un array de les caselles d'un vaixell i retorna la coordenada X més gran
+	 * @param vaixells
+	 * @return
+	 */
 	public int getMaxI(Point[] vaixells){
 		int max = -1;
 		for(int i=0;i<vaixells.length;i++){
@@ -508,7 +538,11 @@ public class Partida {
 		}
 		return max;
 	}
-	
+	/**
+	 * Agafa un array de les caselles d'un vaixell i retorna la coordenada X més petita
+	 * @param vaixells
+	 * @return posicio
+	 */
 	public int getMinI(Point[] vaixells){
 		int min = 10000;
 		for(int i=0;i<vaixells.length;i++){
@@ -518,7 +552,11 @@ public class Partida {
 		}
 		return min;
 	}
-	
+	/**
+	 * Agafa un array de les caselles d'un vaixell i retorna la coordenada Y més gran
+	 * @param vaixells
+	 * @return posicio
+	 */
 	public int getMaxJ(Point[] vaixells){
 		int max = 0;
 		for(int i=0;i<vaixells.length;i++){
@@ -529,7 +567,11 @@ public class Partida {
 		}
 		return max;
 	}
-	
+	/**
+	 * Agafa un array de les caselles d'un vaixell i retorna la coordenada Y més petita
+	 * @param vaixells
+	 * @return posicio
+	 */
 	public int getMinJ(Point[] vaixells){
 		int min = 10000;
 		for(int i=0;i<vaixells.length;i++){
@@ -540,7 +582,7 @@ public class Partida {
 		return min;
 	}
 	
-	
+	/** Tipus de joc aplicant la intel·ligència de tipus normal*/ 
 	public void tornFacil(){
 		Random r = new Random();
 		int posicio = r.nextInt((usuari.getFiles()*usuari.getColumnes())-1);
@@ -554,7 +596,7 @@ public class Partida {
 		posicions.add(p);
 		comprovaVaixell(posicio, false);
 	}
-	
+	/**  Tipus de partida aplicant la intel·ligència de tipus normal */
 	public void tornNormal(){
 		Random r = new Random();
 		
@@ -634,7 +676,7 @@ public class Partida {
 		}
 	}
 
-
+	/**  Tipus de partida aplicant a intel·ligència de tipus difícil */
 	public void tornDificil(){
 		if(torn < 3){
 			tornNormal();
