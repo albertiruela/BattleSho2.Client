@@ -15,6 +15,7 @@ import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
+import java.sql.SQLException;
 import java.util.LinkedList;
 
 import javax.swing.JOptionPane;
@@ -25,6 +26,7 @@ import model.Taulell;
 import network.ComunicacioServidor;
 import view.MainViewC;
 import view.VistaAccedirC;
+import view.VistaMostraMapes;
 import view.VistaNouRegistre;
 import view.VistaPartida;
 
@@ -47,6 +49,7 @@ public class ButtonsController implements ActionListener{
 	/** Declarem la vista referent a la partida */
 	private VistaPartida vistaPartida;
 	
+	private VistaMostraMapes vistaMapes;
 	/** Declarem la classe que ens comunica amb el servidor*/
 	private static ComunicacioServidor comunicacioS;
 	
@@ -101,17 +104,17 @@ public class ButtonsController implements ActionListener{
 		if(e.getActionCommand().equals("OK1")){
 			
 			System.out.println("BOTO OK APRETAT");
-			//message = "LOG:"+vistaAccedir.getNickname()+"/"+vistaAccedir.getPasword();
+			message = "LOG:"+vistaAccedir.getNickname()+"/"+vistaAccedir.getPasword();
 			System.out.println(message);
-			//if(comunicacioS.sendUsuariAccedir(message)){
+			if(comunicacioS.sendUsuariAccedir(message)){
 				viewClient.updateEstat("Has accedit correctament!");
 				viewClient.potsJugar();
 				viewClient.sessioActiva();
 				
-			//}else{
-			//	viewClient.updateEstat("No has pogut accedir");
-				//JOptionPane.showMessageDialog(null, "NICKNAME O CONTRASSENYA EQUIVOCATS","ERROR AL ACCEDIR", JOptionPane.ERROR_MESSAGE);
-			//}
+			}else{
+				viewClient.updateEstat("No has pogut accedir");
+				JOptionPane.showMessageDialog(null, "NICKNAME O CONTRASSENYA EQUIVOCATS","ERROR AL ACCEDIR", JOptionPane.ERROR_MESSAGE);
+			}
 			
 		}
 		
@@ -136,24 +139,33 @@ public class ButtonsController implements ActionListener{
 			
 			//mostrar vista amb els mapes a seleccionar
 			
-			//en un altre if del boto de confirmacio del mapa:
-			
 			try {
-				
-				taulell.carregar_taulell();
-				vistaPartida.newGameView(taulell);
-				vistaPartida.registerControllers(this);
-			} catch (IOException e1) {
+				vistaMapes = new VistaMostraMapes();
+				vistaMapes.registerControllers1(this);
+				vistaMapes.setVisible(true);
+			} catch (SQLException e2) {
 				// TODO Auto-generated catch block
-				e1.printStackTrace();
+				e2.printStackTrace();
 			}
+		}	
+		
+		if(e.getActionCommand().equals("ESCOLLIRMAPA")){
+			
+			LinkedList<Contrincant> llistaC = new LinkedList<Contrincant>();
+			llistaC = vistaMapes.getContrincants();
+			for(Contrincant c: llistaC){
+				if(c.getNom().equals(vistaMapes.getMapa())){
+					taulell = c.getMapa();
+				}
+			}
+			
+			//taulell.carregar_taulell(vistaMapes.getMapa());
+			vistaPartida.newGameView(taulell);
+			vistaPartida.registerControllers(this);
 			
 			partida = new Partida(taulell, this);
 			
-			
-			
 		}
-		
 
 		try{
 			if((Integer.parseInt(e.getActionCommand()) < 1000)){
@@ -188,5 +200,14 @@ public class ButtonsController implements ActionListener{
 		default:
 			break;
 		}
+	}
+	
+	public void partidaGuanyada(int punts){
+		System.out.println("controller guanyat");
+		comunicacioS.sendPartidaGuanyada("GUANYADA:"+punts);
+	}
+	
+	public void partidaPerduda(int punts){
+		comunicacioS.sendPartidaPerduda("PERDUDA:"+punts);
 	}
 }

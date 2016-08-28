@@ -59,13 +59,13 @@ public class ComunicacioServidor extends Thread {
 		try {
 			System.out.println(portServer);
 			sServer = new Socket("127.0.0.1",portServer);
-			dataIn = new ObjectInputStream(sServer.getInputStream());
 			dataOut = new ObjectOutputStream(sServer.getOutputStream());
 			dataOut.writeObject(message);
 			System.out.println(message);
 				
 			String answer = new String();
 			try {
+				dataIn = new ObjectInputStream(sServer.getInputStream());
 				answer = (String)dataIn.readObject();
 			} catch (ClassNotFoundException e) {
 				// TODO Auto-generated catch block
@@ -107,7 +107,6 @@ public class ComunicacioServidor extends Thread {
 				
 			sServer = new Socket("127.0.0.1",portServer);
 			System.out.println("eyyy2");
-			dataIn = new ObjectInputStream(sServer.getInputStream());
 			System.out.println("eyyy3");
 			dataOut = new ObjectOutputStream(sServer.getOutputStream());
 			dataOut.writeObject(message);
@@ -115,6 +114,7 @@ public class ComunicacioServidor extends Thread {
 				
 			String answer = new String();
 			try {
+				dataIn = new ObjectInputStream(sServer.getInputStream());
 				answer = (String) dataIn.readObject();
 			} catch (ClassNotFoundException e) {
 				// TODO Auto-generated catch block
@@ -143,6 +143,7 @@ public class ComunicacioServidor extends Thread {
 	return connexio;
 	}
 	
+	@SuppressWarnings("unchecked")
 	public static LinkedList<Contrincant> sendDemanaMapes(String message) throws ClassNotFoundException {
 		LinkedList<Contrincant> cont = new LinkedList<Contrincant>();
 		
@@ -150,13 +151,13 @@ public class ComunicacioServidor extends Thread {
 		try {
 			sServer = new Socket("127.0.0.1",portServer);
 			System.out.println("eyyy2");
-			dataIn = new ObjectInputStream(sServer.getInputStream());
+			
 			System.out.println("eyyy3");
 			dataOut = new ObjectOutputStream(sServer.getOutputStream());
 			dataOut.writeObject(message);
 			System.out.println(message);
 			
-			
+			dataIn = new ObjectInputStream(sServer.getInputStream());
 			cont = (LinkedList<Contrincant>) dataIn.readObject();
 		
 			System.out.println("AQUI TAMBEEEEEE");
@@ -182,5 +183,76 @@ public class ComunicacioServidor extends Thread {
 		return cont;
 	}
 	
-
+	public boolean sendPartidaGuanyada (String message){
+		Boolean connexio = false; 
+		try {
+				
+			sServer = new Socket("127.0.0.1",portServer);
+			System.out.println("eyyy2");
+			System.out.println("eyyy3");
+			dataOut = new ObjectOutputStream(sServer.getOutputStream());
+			dataOut.writeObject(message);
+			System.out.println(message);
+				
+			String answer = new String();
+			try {
+				dataIn = new ObjectInputStream(sServer.getInputStream());
+				answer = (String) dataIn.readObject();
+			} catch (ClassNotFoundException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			
+				
+			dataOut.close();
+			dataIn.close();
+			sServer.close();
+				
+			
+		} catch (UnknownHostException e) {
+			connexio = false;
+			System.out.println("NO ES POT CONNECTAR 1");
+		} catch (IOException e) {
+			connexio = false;
+			System.out.println("NO ES POT CONNECTAR 2");
+			
+		}
+		
+		return connexio;
+	}
+		
+	public boolean sendPartidaPerduda (String message){
+		Boolean connexio = false; 
+		try {
+				
+			sServer = new Socket("127.0.0.1",portServer);
+			System.out.println("eyyy2");
+			System.out.println("eyyy3");
+			dataOut = new ObjectOutputStream(sServer.getOutputStream());
+			dataOut.writeObject(message);
+			System.out.println(message);
+				
+			String answer = new String();
+			try {
+				dataIn = new ObjectInputStream(sServer.getInputStream());
+				answer = (String) dataIn.readObject();
+			} catch (ClassNotFoundException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+				
+			dataOut.close();
+			dataIn.close();
+			sServer.close();
+				
+			
+		} catch (UnknownHostException e) {
+			connexio = false;
+			System.out.println("NO ES POT CONNECTAR 1");
+		} catch (IOException e) {
+			connexio = false;
+			System.out.println("NO ES POT CONNECTAR 2");
+		}
+		return connexio;
+	}
 }

@@ -373,6 +373,7 @@ public class Partida {
 				if(usuari.getvTotals()==0){
 					estat = "HAS GUANYAT";
 					puntsU+=200;
+					controller.partidaGuanyada(puntsU);
 				}else{
 					estat = "TORN USUARI";
 				}
@@ -430,6 +431,7 @@ public class Partida {
 				if(oponent.getvTotals()==0){
 					estat = "HAS PERDUT";
 					puntsO+=200;
+					controller.partidaPerduda(puntsU);
 				}else{
 					estat = "TORN OPONENT";
 					System.out.println(estat);

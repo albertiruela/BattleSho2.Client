@@ -73,6 +73,11 @@ public class VistaMostraMapes extends JDialog{
 	}
 	
 	
+	public LinkedList<Contrincant> getContrincants() {
+		return contrincants;
+	}
+
+
 	public void registerControllers1(ButtonsController bc){
 		jbEscollir1.setActionCommand("ESCOLLIRMAPA");
 		jbEscollir1.addActionListener(bc);
@@ -104,10 +109,11 @@ public class VistaMostraMapes extends JDialog{
 		 
 		 
 		 return jtTable;
-		
-		
 	}
 	
-	
+	public String getMapa(){
+		System.out.println(jtTaula.getModel().getValueAt(jtTaula.getSelectedRow(), 0).toString());
+		return jtTaula.getModel().getValueAt(jtTaula.getSelectedRow(), 0).toString();
+	}
 
 }

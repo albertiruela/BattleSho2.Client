@@ -5,12 +5,13 @@ import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
+import java.io.Serializable;
 
 // TODO: Auto-generated Javadoc
 /**
  * The Class Taulell.
  */
-public class Taulell {
+public class Taulell implements Serializable{
 	
 	private char[][] taulell;
 
@@ -36,9 +37,9 @@ public class Taulell {
 	 *
 	 * @throws IOException Signals that an I/O exception has occurred.
 	 */
-	public void carregar_taulell() throws IOException {
+	public void carregar_taulell(String fitxer) throws IOException {
 		String linia;
-		FileReader f = new FileReader("1.txt");
+		FileReader f = new FileReader(fitxer);
 		BufferedReader b = new BufferedReader(f);
 		linia = b.readLine();
 		n_vaixells_petits = Integer.parseInt(linia);

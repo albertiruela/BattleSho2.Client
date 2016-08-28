@@ -46,20 +46,19 @@ public class MainClient {
 			public void run() {
 				
 				Configuracio config = new Configuracio();
-				
+				System.out.println("0");
 				if (config.fes()){
-					
+					System.out.println("1");
 					MainViewC clientView = new MainViewC();
 					VistaAccedirC vistaAccedir = new VistaAccedirC();
 					VistaNouRegistre vistaRegistre = new VistaNouRegistre();
 					VistaPartida vistaPartida = new VistaPartida();
-					
+					System.out.println("2");
 					ComunicacioServidor cServidor = new ComunicacioServidor (config.getIp(), config.getPortServer());
 					
 					ButtonsController controller = new ButtonsController(clientView,vistaAccedir,vistaRegistre,vistaPartida,cServidor);
 					
 					
-					//ei
 					clientView.registerController(controller);
 					vistaAccedir.registerControllers(controller);
 					vistaRegistre.registerControllers(controller);
@@ -69,13 +68,6 @@ public class MainClient {
 					vistaRegistre.setVisible(false);
 					vistaPartida.setVisible(false);
 					clientView.setVisible(true);
-					
-					/*try {
-						LinkedList<Contrincant> cont = ComunicacioServidor.sendDemanaMapes("MAPES");
-					} catch (Exception e) {
-						// TODO Auto-generated catch block
-						e.printStackTrace();
-					}*/
 					
 				}
 			}
