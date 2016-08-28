@@ -54,7 +54,7 @@ public class VistaPartida extends JFrame{
 			for(int j=0;j<taulell.getColumnes();j++){
 				
 				arrayUser[i][j] = new JButton();
-				arrayUser[i][j].setBackground(Color.CYAN);
+				arrayUser[i][j].setBackground(Color.GRAY);
 				arrayUser[i][j].setActionCommand(index.toString());
 				arrayUser[i][j].setPreferredSize(new Dimension(40,40));
 				jpUser.add(arrayUser[i][j]);
@@ -66,6 +66,7 @@ public class VistaPartida extends JFrame{
 				jpOp.add(arrayOp[i][j]);
 				
 				index++;
+				index2++;
 			}
 		}
 		
@@ -90,4 +91,27 @@ public class VistaPartida extends JFrame{
 		}
 	}
 	
+	public void pintaVaixell(int i, int j, boolean usuari){
+		if(usuari){
+			arrayUser[i][j].setBackground(Color.RED);
+		}else{
+			arrayOp[i][j].setBackground(Color.RED);
+		}
+	}
+	
+	public void pintaAigua(int i, int j, boolean usuari){
+		if(usuari){
+			arrayUser[i][j].setBackground(Color.CYAN);
+		}else{
+			arrayOp[i][j].setBackground(Color.CYAN);
+		}
+	}
+	
+	public void pintaTocat(int i, int j, boolean usuari){
+		if(usuari){
+			arrayUser[i][j].setBackground(Color.BLACK);
+		}else{
+			arrayOp[i][j].setBackground(Color.BLACK);
+		}
+	}
 }

@@ -116,18 +116,43 @@ public class ButtonsController implements ActionListener{
 				e1.printStackTrace();
 			}
 			
-			partida = new Partida(taulell);
+			partida = new Partida(taulell, this);
+			
+			
 			
 		}
 		
-		if(Integer.parseInt(e.getActionCommand()) < 1000){
-			if(partida.getEstat().equals("CREA FLOTA")){
-				partida.setVaixell(Integer.parseInt(e.getActionCommand()));
+		try{
+			if((Integer.parseInt(e.getActionCommand()) < 1000)){
+				if(partida.getEstat().equals("CREA FLOTA")){
+					partida.setVaixell(Integer.parseInt(e.getActionCommand()));
+				}
 			}
 			
-		}
-		
+			if((Integer.parseInt(e.getActionCommand()) >= 1000)){
+				if(partida.getEstat().equals("TORN USUARI")){
+					partida.comprovaVaixell(Integer.parseInt(e.getActionCommand()), true);
+				}
+			}
+		}catch(NumberFormatException ex){}
 	}
 	
-	
+	public void pintaCasella(char casella, int i, int j, boolean usuari){
+		switch(casella){
+		case 'V':
+			vistaPartida.pintaVaixell(i,j, usuari);
+			break;
+		
+		case 'A':
+			vistaPartida.pintaAigua(i,j, usuari);
+			break;
+			
+		case 'T':
+			vistaPartida.pintaTocat(i,j, usuari);
+			break;
+			
+		default:
+			break;
+		}
+	}
 }
