@@ -41,7 +41,7 @@ public class VistaMostraMapes extends JDialog{
 	/**
 	 * Botó amb el que activarem l'opció d'afegir mapes
 	 */
-	private JButton jbEscollir1 = new JButton ("Escollir Contrincant"); 
+	private JButton jbEscollir1 = new JButton ("OK"); 
 	
 	/**
 	 * Insta a la creació de la vista dels escenaris
@@ -54,7 +54,7 @@ public class VistaMostraMapes extends JDialog{
 		getContentPane().setLayout(new BorderLayout());
 		contentPanel.setLayout(new FlowLayout());
 		
-		jpEscollir.add(jbAfegir0);
+		jpEscollir.add(jbEscollir0);
 		jpEscollir.add(jbEscollir1);
 		
 		jbEscollir0.setVisible(false);
@@ -68,8 +68,8 @@ public class VistaMostraMapes extends JDialog{
 	
 	
 	public void registerControllers1(ButtonsController bc){
-		jbAfegir1.setActionCommand("ESCOLLIRMAPA");
-		jbAfegir1.addActionListener(bc);
+		jbEscollir1.setActionCommand("ESCOLLIRMAPA");
+		jbEscollir1.addActionListener(bc);
 	}
 	/**
 	 * Funció que rep el ResultSet de la base de dades  i ho carrega a la taula que mostrarem
