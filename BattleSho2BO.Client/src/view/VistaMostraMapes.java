@@ -32,9 +32,7 @@ public class VistaMostraMapes extends JDialog{
 	 * Taula on col·locarem els escenaris classificats pel nickname
 	 */
 	private JTable jtTaula = new JTable(); 
-	/**
-	 * Rebrem els escenaris en forma LinkedList
-	 */
+	
 	private LinkedList<Contrincant> contrincants;
 	
 	private JButton jbEscollir0 = new JButton (""); 

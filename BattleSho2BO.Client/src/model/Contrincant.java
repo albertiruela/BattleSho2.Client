@@ -3,7 +3,7 @@ package model;
 import java.io.Serializable;
 import java.sql.Date;
 
-import model.Mapa;
+
 /**
  * Classe de tipus contrincant que passem al client per carregar mapa nom i data
  * @author Albert
