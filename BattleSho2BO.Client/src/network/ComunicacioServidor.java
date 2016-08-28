@@ -106,8 +106,6 @@ public class ComunicacioServidor extends Thread {
 		try {
 				
 			sServer = new Socket("127.0.0.1",portServer);
-			System.out.println("eyyy2");
-			System.out.println("eyyy3");
 			dataOut = new ObjectOutputStream(sServer.getOutputStream());
 			dataOut.writeObject(message);
 			
