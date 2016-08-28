@@ -523,7 +523,7 @@ public class Partida {
 	}
 	
 	/**
-	 * Numero de files del taulell
+	 * Agafa un array de les caselles d'un vaixell i retorna la coordenada X més gran
 	 * @param vaixells
 	 * @return
 	 */
@@ -536,7 +536,11 @@ public class Partida {
 		}
 		return max;
 	}
-	
+	/**
+	 * Agafa un array de les caselles d'un vaixell i retorna la coordenada X més petita
+	 * @param vaixells
+	 * @return posicio
+	 */
 	public int getMinI(Point[] vaixells){
 		int min = 10000;
 		for(int i=0;i<vaixells.length;i++){
@@ -546,7 +550,11 @@ public class Partida {
 		}
 		return min;
 	}
-	
+	/**
+	 * Agafa un array de les caselles d'un vaixell i retorna la coordenada Y més gran
+	 * @param vaixells
+	 * @return posicio
+	 */
 	public int getMaxJ(Point[] vaixells){
 		int max = 0;
 		for(int i=0;i<vaixells.length;i++){
@@ -558,9 +566,9 @@ public class Partida {
 		return max;
 	}
 	/**
-	 * 
+	 * Agafa un array de les caselles d'un vaixell i retorna la coordenada Y més petita
 	 * @param vaixells
-	 * @return
+	 * @return posicio
 	 */
 	public int getMinJ(Point[] vaixells){
 		int min = 10000;

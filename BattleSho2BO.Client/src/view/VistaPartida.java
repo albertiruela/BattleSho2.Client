@@ -13,37 +13,39 @@ import javax.swing.JPanel;
 import controller.ButtonsController;
 import model.Taulell;
 
-// TODO: Auto-generated Javadoc
+
 /**
- * The Class VistaPartida.
+ * Instancia a la creació de la vista de la partida
+ * @author Albert
+ *
  */
 public class VistaPartida extends JFrame{
 
-	/** The jp score. */
+	/** Panell amb la puntuació*/
 	JPanel jpScore = new JPanel();
 	
-	/** The jp map. */
+	/**  */
 	JPanel jpMap = new JPanel();
 	
-	/** The jp user. */
+	/** Panell amb el mapa de l'usuari */
 	JPanel jpUser = new JPanel();
 	
-	/** The jp op. */
+	/** Panell amb el mapa de l'oponent*/
 	JPanel jpOp = new JPanel();
 	
-	/** The array user. */
+	/** buttons de l'usuari */
 	JButton[][] arrayUser;
 	
-	/** The array op. */
+	/** butons del oponent */
 	JButton[][] arrayOp;
 	
 	/** The taulell op. */
 	Taulell taulellOp = new Taulell();
 	
 	/**
-	 * New game view.
+	 * Creem la vista del joc
 	 *
-	 * @param taulell the taulell
+	 * @param taulell 
 	 */
 	public void newGameView(Taulell taulell){
 		
@@ -102,9 +104,9 @@ public class VistaPartida extends JFrame{
 	}
 	
 	/**
-	 * Register controllers.
+	 * Registrem controladors
 	 *
-	 * @param controller the controller
+	 * @param controller
 	 */
 	public void registerControllers(ButtonsController controller){
 		for(int i=0;i<taulellOp.getFiles();i++){
@@ -114,7 +116,12 @@ public class VistaPartida extends JFrame{
 			}
 		}
 	}
-	
+	/**
+	 * Pinta vaixell a les caselles que assignem
+	 * @param i
+	 * @param j
+	 * @param usuari
+	 */
 	public void pintaVaixell(int i, int j, boolean usuari){
 		if(usuari){
 			arrayUser[i][j].setBackground(Color.RED);
@@ -122,7 +129,12 @@ public class VistaPartida extends JFrame{
 			arrayOp[i][j].setBackground(Color.RED);
 		}
 	}
-	
+	/**
+	 * Pinta aigua a les caselles que assignem
+	 * @param i
+	 * @param j
+	 * @param usuari
+	 */
 	public void pintaAigua(int i, int j, boolean usuari){
 		if(usuari){
 			arrayUser[i][j].setBackground(Color.CYAN);
@@ -130,7 +142,12 @@ public class VistaPartida extends JFrame{
 			arrayOp[i][j].setBackground(Color.CYAN);
 		}
 	}
-	
+	/**
+	 * Pinta de color diferent al taulell de l'usuari si ha estat tocat
+	 * @param i
+	 * @param j
+	 * @param usuari
+	 */
 	public void pintaTocat(int i, int j, boolean usuari){
 		if(usuari){
 			arrayUser[i][j].setBackground(Color.BLACK);
