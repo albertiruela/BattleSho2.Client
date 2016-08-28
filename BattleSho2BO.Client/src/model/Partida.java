@@ -1,12 +1,20 @@
 package model;
 
+
 import java.awt.Point;
 import java.util.LinkedList;
 import java.util.Random;
 
 import controller.ButtonsController;
 
+
+// TODO: Auto-generated Javadoc
+/**
+ * The Class Partida.
+ */
+
 public class Partida {
+
 
 	private ButtonsController controller;
 	
@@ -35,7 +43,11 @@ public class Partida {
 	private int torn = 0;
 	
 	
-	
+	/**
+	 * Instantiates a new partida.
+	 *
+	 * @param taulell the taulell
+	 */
 	public Partida(Taulell taulell, ButtonsController controller){
 		this.controller = controller;
 		oponent = taulell;
@@ -67,14 +79,30 @@ public class Partida {
 		usuari.setvTotals(numV);
 	}
 
+	/**
+	 * Gets the estat.
+	 *
+	 * @return the estat
+	 */
 	public String getEstat() {
 		return estat;
 	}
 
+	/**
+	 * Sets the estat.
+	 *
+	 * @param estat the new estat
+	 */
 	public void setEstat(String estat) {
 		this.estat = estat;
 	}
 	
+	/**
+	 * Sets the vaixell.
+	 *
+	 * @param posicio the posicio
+	 * @return true, if successful
+	 */
 	public boolean setVaixell(int posicio){
 		int i = posicio/oponent.getFiles();
 		int j = posicio%oponent.getColumnes();

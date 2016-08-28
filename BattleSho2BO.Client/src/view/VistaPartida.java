@@ -13,19 +13,38 @@ import javax.swing.JPanel;
 import controller.ButtonsController;
 import model.Taulell;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class VistaPartida.
+ */
 public class VistaPartida extends JFrame{
 
+	/** The jp score. */
 	JPanel jpScore = new JPanel();
+	
+	/** The jp map. */
 	JPanel jpMap = new JPanel();
 	
+	/** The jp user. */
 	JPanel jpUser = new JPanel();
+	
+	/** The jp op. */
 	JPanel jpOp = new JPanel();
 	
+	/** The array user. */
 	JButton[][] arrayUser;
+	
+	/** The array op. */
 	JButton[][] arrayOp;
 	
+	/** The taulell op. */
 	Taulell taulellOp = new Taulell();
 	
+	/**
+	 * New game view.
+	 *
+	 * @param taulell the taulell
+	 */
 	public void newGameView(Taulell taulell){
 		
 		setTitle("");
@@ -82,6 +101,11 @@ public class VistaPartida extends JFrame{
 		
 	}
 	
+	/**
+	 * Register controllers.
+	 *
+	 * @param controller the controller
+	 */
 	public void registerControllers(ButtonsController controller){
 		for(int i=0;i<taulellOp.getFiles();i++){
 			for(int j=0;j<taulellOp.getColumnes();j++){

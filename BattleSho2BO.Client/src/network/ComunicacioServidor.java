@@ -3,29 +3,42 @@ package network;
 import java.io.DataInputStream;
 import java.io.DataOutputStream;
 import java.io.IOException;
+import java.io.ObjectInputStream;
 import java.net.Socket;
 import java.net.UnknownHostException;
+import java.util.LinkedList;
 
 import model.Configuracio;
+import model.Contrincant;
 import controller.ButtonsController;
 
 
-
+/**
+ * En aquesta classe gestionarem la connexió del client amb el servidor i enviarem la informació necessària
+ * @author Albert
+ *
+ */
 
 public class ComunicacioServidor extends Thread {
-	
-	private Socket sServer;
-	
-	private DataInputStream dataIn;
-	
-	private DataOutputStream dataOut;
-	
-	private int portServidor;
-	
+	/** el socket mitjançant el que passarem la informació al Servidor */
+	private static  Socket sServer;
+	/** l'input per on rebrem les respostes del servidor */
+	private static DataInputStream dataIn;
+	/** l'output per on enviarem la info a registrar o validar */
+	private static DataOutputStream dataOut;
+	/** variable on assignem el port amb el que parlem al servidor */
+	private static int portServer;
+	/** controlador dels botons per alguna crida que necessitem*/
 	private ButtonsController controller;
 	
+	//private static ObjectInputStream objectIn;
+	
+	
+	
 	public ComunicacioServidor(String ip, int portServidor){
-		this.portServidor = portServidor;
+		
+		this.portServer= portServidor;
+		
 	}
 	
 	public void registerController(ButtonsController controller){
@@ -33,109 +46,115 @@ public class ComunicacioServidor extends Thread {
 	}
 	
 	
-	
-		public boolean sendUsuariARegistrar (String message){
-			System.out.println("eyyy2");
-			Configuracio config = new Configuracio();
-			
-			Boolean connexio = false; 
-			try {
-				//System.out.println("HOLA" + config.getPortServer());
-				sServer = new Socket("127.0.0.1",5200);
-				System.out.println("eyyy2");
-				dataIn = new DataInputStream(sServer.getInputStream());
-				System.out.println("eyyy3");
-				dataOut = new DataOutputStream(sServer.getOutputStream());
-				dataOut.writeUTF(message);
-				System.out.println(message);
-				
-				String answer = new String();
-				answer = dataIn.readUTF();
-				if(answer.equals("OK")){
-					
-					connexio = true;
-				}else{
-					System.out.println("fail");
-					connexio = false;
-					
-				}
-				
-				dataOut.close();
-				dataIn.close();
-				sServer.close();
-				
-			
-			} catch (UnknownHostException e) {
-				connexio = false;
-				System.out.println("NO ES POT CONNECTAR 1");
-				//controller.makeDialog("Coudn't connect with server", false);
-			} catch (IOException e) {
-				connexio = false;
-				System.out.println("NO ES POT CONNECTAR 2");
-				//controller.makeDialog("Coudn't connect with server", false);
-			}
-			return connexio;
-		}
-			
-		public boolean sendUsuariAccedir (String message){
-				
-			Configuracio config = new Configuracio();
-			
-			Boolean connexio = false; 
-			try {
-				//System.out.println("HOLA" + config.getPortServer());
-				sServer = new Socket("127.0.0.1",5200);
-				System.out.println("eyyy2");
-				dataIn = new DataInputStream(sServer.getInputStream());
-				System.out.println("eyyy3");
-				dataOut = new DataOutputStream(sServer.getOutputStream());
-				dataOut.writeUTF(message);
-				System.out.println(message);
-				
-				String answer = new String();
-				answer = dataIn.readUTF();
-				if(answer.equals("OK")){
-					
-					connexio = true;
-				}else{
-					connexio = false;
-				}
-				
-				dataOut.close();
-				dataIn.close();
-				sServer.close();
-				
-			
-			} catch (UnknownHostException e) {
-				connexio = false;
-				System.out.println("NO ES POT CONNECTAR 1");
-			} catch (IOException e) {
-				connexio = false;
-				System.out.println("NO ES POT CONNECTAR 2");
-			
-		}
+	/** 
+	 * funció amb la que enviem les dades de l'usuari per a enregistrar-lo
+	 * @param message
+	 * @return booleà per a validar si s'ha registrat correctament
+	 */
+	public boolean sendUsuariARegistrar (String message){
 		
+			
+		Boolean connexio = false; 
+		try {
+			System.out.println(portServer);
+			sServer = new Socket("127.0.0.1",portServer);
+			dataIn = new DataInputStream(sServer.getInputStream());
+			dataOut = new DataOutputStream(sServer.getOutputStream());
+			dataOut.writeUTF(message);
+			System.out.println(message);
+				
+			String answer = new String();
+			answer = dataIn.readUTF();
+			if(answer.equals("OK")){
+				connexio = true;
+			}else{
+				System.out.println("fail");
+				connexio = false;
+					
+			}
+				
+			dataOut.close();
+			dataIn.close();
+			sServer.close();
+				
+			
+		} catch (UnknownHostException e) {
+			connexio = false;
+			System.out.println("NO ES POT CONNECTAR 1");
+			
+		} catch (IOException e) {
+			connexio = false;
+			System.out.println("NO ES POT CONNECTAR 2");
+			
+		}
 		return connexio;
 	}
 	
-	public String sendDemanaMapes(String message){
-		Configuracio config = new Configuracio();
-		String answer = new String();
+	/**
+	 * En aquesta funció enviar informació per a veure si l'usuari existeix i te el password correcte
+	 * @param message nickname i password separats per una '/'
+	 * @return boolea de si existeix l'usuari i pot accedir
+	 */
+	public boolean sendUsuariAccedir (String message){
 		Boolean connexio = false; 
 		try {
-			//System.out.println("HOLA" + config.getPortServer());
-			sServer = new Socket("127.0.0.1",5200);
+				
+			sServer = new Socket("127.0.0.1",portServer);
 			System.out.println("eyyy2");
 			dataIn = new DataInputStream(sServer.getInputStream());
 			System.out.println("eyyy3");
 			dataOut = new DataOutputStream(sServer.getOutputStream());
 			dataOut.writeUTF(message);
 			System.out.println(message);
-			
+				
+			String answer = new String();
 			answer = dataIn.readUTF();
-			
+			if(answer.equals("OK")){
+				connexio = true;
+			}else{
+				connexio = false;
+			}
+				
 			dataOut.close();
 			dataIn.close();
+			sServer.close();
+				
+			
+		} catch (UnknownHostException e) {
+			connexio = false;
+			System.out.println("NO ES POT CONNECTAR 1");
+		} catch (IOException e) {
+			connexio = false;
+			System.out.println("NO ES POT CONNECTAR 2");
+			
+	}
+		
+	return connexio;
+	}
+	
+	/*public static LinkedList<Contrincant> sendDemanaMapes(String message) throws ClassNotFoundException {
+		LinkedList<Contrincant> cont = new LinkedList<Contrincant>();
+		
+		boolean connexio = false;
+		try {
+			sServer = new Socket("127.0.0.1",portServer);
+			System.out.println("eyyy2");
+			objectIn = new ObjectInputStream(sServer.getInputStream());
+			System.out.println("eyyy3");
+			dataOut = new DataOutputStream(sServer.getOutputStream());
+			dataOut.writeUTF(message);
+			System.out.println(message);
+			
+			
+			
+		
+			System.out.println("AQUI TAMBEEEEEE");
+			
+			
+			
+			
+			dataOut.close();
+			objectIn.close();
 			sServer.close();
 			
 		
@@ -145,11 +164,12 @@ public class ComunicacioServidor extends Thread {
 		} catch (IOException e) {
 			connexio = false;
 			System.out.println("NO ES POT CONNECTAR 2");
+			e.printStackTrace();
 		}
 	
 	
-		return answer;
-	}
+		return cont;
+	}*/
 	
 
 }
