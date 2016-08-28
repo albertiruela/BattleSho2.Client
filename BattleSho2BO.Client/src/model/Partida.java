@@ -10,9 +10,10 @@ import controller.ButtonsController;
 
 // TODO: Auto-generated Javadoc
 /**
- * The Class Partida.
+ * 
+ * @author Albert
+ *
  */
-
 public class Partida {
 
 
