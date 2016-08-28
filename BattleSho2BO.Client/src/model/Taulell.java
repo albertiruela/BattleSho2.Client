@@ -291,99 +291,106 @@ public class Taulell {
 		return taulell[0].length;
 	}
 	/**
-	 * 
+	 * Retorna el taulell format
 	 * @return
 	 */
 	public char[][] getTaulell() {
 		return taulell;
 	}
-
+	/**
+	 * Fixa el taulell
+	 * @param taulell
+	 */
 	public void setTaulell(char[][] taulell) {
 		this.taulell = taulell;
 	}
 
 	/**
-	 * Gets the n vaixells petits.
+	 * Retorna els vaixells petits
 	 *
-	 * @return the n vaixells petits
+	 * @return n vaixells petits
 	 */
 	public int getN_vaixells_petits() {
 		return n_vaixells_petits;
 	}
 
 	/**
-	 * Sets the n vaixells petits.
+	 * fixa els vaixells petits
 	 *
-	 * @param n_vaixells_petits the new n vaixells petits
+	 * @param n_vaixells_petits 
 	 */
 	public void setN_vaixells_petits(int n_vaixells_petits) {
 		this.n_vaixells_petits = n_vaixells_petits;
 	}
 
 	/**
-	 * Gets the n vaixells mitjans.
+	 * Retorna els n vaixells mitjans
 	 *
-	 * @return the n vaixells mitjans
+	 * @return n vaixells mitjans
 	 */
 	public int getN_vaixells_mitjans() {
 		return n_vaixells_mitjans;
 	}
 
 	/**
-	 * Sets the n vaixells mitjans.
+	 * Fixa els vaixells mitjans
 	 *
-	 * @param n_vaixells_mitjans the new n vaixells mitjans
+	 * @param n_vaixells_mitjans 
 	 */
 	public void setN_vaixells_mitjans(int n_vaixells_mitjans) {
 		this.n_vaixells_mitjans = n_vaixells_mitjans;
 	}
 
 	/**
-	 * Gets the n vaixells grans.
+	 * Rep el numero de vaixells grans
 	 *
-	 * @return the n vaixells grans
+	 * @return  n vaixells grans
 	 */
 	public int getN_vaixells_grans() {
 		return n_vaixells_grans;
 	}
 
 	/**
-	 * Sets the n vaixells grans.
+	 * Fixa el numero de vaixells grans
 	 *
-	 * @param n_vaixells_grans the new n vaixells grans
+	 * @param n_vaixells_grans 
 	 */
 	public void setN_vaixells_grans(int n_vaixells_grans) {
 		this.n_vaixells_grans = n_vaixells_grans;
 	}
 
 	/**
-	 * Gets the dificultat.
+	 * Retorna la dificultat
 	 *
-	 * @return the dificultat
+	 * @return dificultat
 	 */
 	public int getDificultat() {
 		return dificultat;
 	}
 
 	/**
-	 * Sets the dificultat.
+	 * Fixa la dificultat
 	 *
-	 * @param dificultat the new dificultat
+	 * @param dificultat 
 	 */
 	public void setDificultat(int dificultat) {
 		this.dificultat = dificultat;
 	}
 
 	/**
-	 * Sets the vaixell.
+	 * Fixa el vaixella la posicio.
 	 *
-	 * @param i the i
-	 * @param j the j
+	 * @param i
+	 * @param j 
 	 */
 	public void setVaixell(int i, int j){
 		taulell[i][j] = 'V';
 	}
-	
+	/**
+	 * Fixa en blanc la posicio
+	 * @param i
+	 * @param j
+	 */
 	public void setBlanc(int i, int j){
 		taulell[i][j] = '-';
 	}
