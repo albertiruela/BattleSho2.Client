@@ -80,7 +80,6 @@ public class ButtonsController implements ActionListener{
 	public void actionPerformed (ActionEvent e){
 		
 		String message = new String();
-		System.out.println("actionPerformed");
 		if(e.getActionCommand().equals("ACCEDIR")){
 			
 			vistaAccedir.setVisible(true);
@@ -120,7 +119,7 @@ public class ButtonsController implements ActionListener{
 			
 			System.out.println("BOTO OK2 APRETAT");
 			message = "ADD:"+vistaRegistre.getNickname()+"/"+vistaRegistre.getPasword();
-			System.out.println("FORMAT:" + message);
+			
 			if (comunicacioS.sendUsuariARegistrar(message)){
 				viewClient.updateEstat("Has estat registrat correctament!");
 				
