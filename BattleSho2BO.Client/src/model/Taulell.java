@@ -6,25 +6,30 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 
-// TODO: Auto-generated Javadoc
 /**
- * The Class Taulell.
+ * Classe destinada a la creació del taulell
+ * @author Albert
+ *
  */
 public class Taulell {
-	
+	/**
+	 * matriu de caracters
+	 */
 	private char[][] taulell;
-
-	/** The n vaixells petits. */
+	/** número de vaixell petits que llegim */
 	private int n_vaixells_petits;
 	private Point[][] vaixells2;
-	/** The n vaixells mitjans. */
+	/** número de vaixell mitjans que llegim */ 
 	private int n_vaixells_mitjans;
 	private Point[][] vaixells3;
-	/** The n vaixells grans. */
+	/** número de vaixell grans que llegim */
 	private int n_vaixells_grans;
 	private Point[][] vaixells4;
-	/** The dificultat. */
+	/** Dificultat de la partida */
 	private int dificultat;
+	/**
+	 * vaixells totals
+	 */
 	private int vTotals;
 	
 	
@@ -32,7 +37,7 @@ public class Taulell {
 	
 
 	/**
-	 * Carregar taulell.
+	 * Carreguem el taulell a partir del fitxer
 	 *
 	 * @throws IOException Signals that an I/O exception has occurred.
 	 */
@@ -80,27 +85,45 @@ public class Taulell {
 		System.out.println(dificultat);
 	}
 	
-
+	/**
+	 * Retorna els vaixells de dues caselles
+	 * @return
+	 */
 	public Point[][] getVaixells2() {
 		return vaixells2;
 	}
-
+	/**
+	 * col·loca vaixells de dues caselles
+	 * @param vaixells2
+	 */
 	public void setVaixells2(Point[][] vaixells2) {
 		this.vaixells2 = vaixells2;
 	}
-
+	/** 
+	 * col·loca vaixells de 3 caselles
+	 * @param vaixells3
+	 */
 	public void setVaixells3(Point[][] vaixells3) {
 		this.vaixells3 = vaixells3;
 	}
-
+	/**
+	 * col·loca vaixells de 4 caselles
+	 * @param vaixells4
+	 */
 	public void setVaixells4(Point[][] vaixells4) {
 		this.vaixells4 = vaixells4;
 	}
-
+	/**
+	 * Retorna número de vaixells total
+	 * @return int amb el numero de vaixells total
+	 */
 	public int getvTotals() {
 		return vTotals;
 	}
-
+	/**
+	 * fixa els vaixells totals
+	 * @param vTotals
+	 */
 	public void setvTotals(int vTotals) {
 		this.vTotals = vTotals;
 	}
@@ -116,7 +139,9 @@ public class Taulell {
 			System.out.println("\n");
 		}
 	}
-	
+	/**
+	 * Funció que servira per omplir els vaixells
+	 */
 	public void ompleVaixells(){
 		int caselles = 0;
 		boolean trobat = false;
@@ -219,7 +244,11 @@ public class Taulell {
 		}
 	}
 	
-	
+	/**
+	 * Funció per retornar els vaixells
+	 * @param i
+	 * @return
+	 */
 	public Point[][] getVaixells(int i) {
 		switch(i){
 		case 0:
@@ -231,7 +260,10 @@ public class Taulell {
 		}
 		return null;
 	}
-
+	/**
+	 * Retorna vaixells de 3
+	 * @return 
+	 */
 	public Point[][] getVaixells3() {
 		return vaixells3;
 	}
@@ -242,23 +274,26 @@ public class Taulell {
 
 		
 	/**
-	 * Gets the files.
+	 * Files del taulell
 	 *
-	 * @return the files
+	 * @return int amb les files
 	 */
 	public int getFiles(){
 		return taulell.length;
 	}
 	
 	/**
-	 * Gets the columnes.
+	 * Retorna les columnes
 	 *
-	 * @return the columnes
+	 * @return int amb les columnes
 	 */
 	public int getColumnes(){
 		return taulell[0].length;
 	}
-
+	/**
+	 * 
+	 * @return
+	 */
 	public char[][] getTaulell() {
 		return taulell;
 	}

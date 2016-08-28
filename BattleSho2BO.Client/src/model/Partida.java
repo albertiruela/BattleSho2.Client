@@ -10,15 +10,19 @@ import controller.ButtonsController;
 
 // TODO: Auto-generated Javadoc
 /**
- * 
+ *Classe des d'on gestionem la partida 
  * @author Albert
  *
  */
 public class Partida {
-
-
-	private ButtonsController controller;
 	
+	/**
+	 * Controlador dels botons
+	 */
+	private ButtonsController controller;
+	/**
+	 * 
+	 */
 	private String estat = new String("ON");
 	
 	private Taulell usuari = new Taulell();
