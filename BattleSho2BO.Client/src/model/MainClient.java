@@ -1,7 +1,14 @@
 package model;
 
 
+import java.util.LinkedList;
+
 import javax.swing.SwingUtilities;
+
+
+
+
+
 
 
 
@@ -17,7 +24,6 @@ import view.MainViewC;
 import view.VistaAccedirC;
 import view.VistaNouRegistre;
 import view.VistaPartida;
-
 import model.Configuracio;
 
 
@@ -63,6 +69,13 @@ public class MainClient {
 					vistaRegistre.setVisible(false);
 					vistaPartida.setVisible(false);
 					clientView.setVisible(true);
+					
+					/*try {
+						LinkedList<Contrincant> cont = ComunicacioServidor.sendDemanaMapes("MAPES");
+					} catch (Exception e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}*/
 					
 				}
 			}

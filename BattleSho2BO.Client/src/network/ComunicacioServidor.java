@@ -3,10 +3,13 @@ package network;
 import java.io.DataInputStream;
 import java.io.DataOutputStream;
 import java.io.IOException;
+import java.io.ObjectInputStream;
 import java.net.Socket;
 import java.net.UnknownHostException;
+import java.util.LinkedList;
 
 import model.Configuracio;
+import model.Contrincant;
 import controller.ButtonsController;
 
 
@@ -18,15 +21,19 @@ import controller.ButtonsController;
 
 public class ComunicacioServidor extends Thread {
 	/** el socket mitjançant el que passarem la informació al Servidor */
-	private Socket sServer;
+	private static  Socket sServer;
 	/** l'input per on rebrem les respostes del servidor */
-	private DataInputStream dataIn;
+	private static DataInputStream dataIn;
 	/** l'output per on enviarem la info a registrar o validar */
-	private DataOutputStream dataOut;
+	private static DataOutputStream dataOut;
 	/** variable on assignem el port amb el que parlem al servidor */
-	private int portServer;
+	private static int portServer;
 	/** controlador dels botons per alguna crida que necessitem*/
 	private ButtonsController controller;
+	
+	//private static ObjectInputStream objectIn;
+	
+	
 	
 	public ComunicacioServidor(String ip, int portServidor){
 		
@@ -125,23 +132,29 @@ public class ComunicacioServidor extends Thread {
 	return connexio;
 	}
 	
-	public String sendDemanaMapes(String message){
-		String answer = new String();
+	/*public static LinkedList<Contrincant> sendDemanaMapes(String message) throws ClassNotFoundException {
+		LinkedList<Contrincant> cont = new LinkedList<Contrincant>();
+		
 		boolean connexio = false;
 		try {
-			
 			sServer = new Socket("127.0.0.1",portServer);
 			System.out.println("eyyy2");
-			dataIn = new DataInputStream(sServer.getInputStream());
+			objectIn = new ObjectInputStream(sServer.getInputStream());
 			System.out.println("eyyy3");
 			dataOut = new DataOutputStream(sServer.getOutputStream());
 			dataOut.writeUTF(message);
 			System.out.println(message);
 			
-			answer = dataIn.readUTF();
+			
+			
+		
+			System.out.println("AQUI TAMBEEEEEE");
+			
+			
+			
 			
 			dataOut.close();
-			dataIn.close();
+			objectIn.close();
 			sServer.close();
 			
 		
@@ -151,11 +164,12 @@ public class ComunicacioServidor extends Thread {
 		} catch (IOException e) {
 			connexio = false;
 			System.out.println("NO ES POT CONNECTAR 2");
+			e.printStackTrace();
 		}
 	
 	
-		return answer;
-	}
+		return cont;
+	}*/
 	
 
 }

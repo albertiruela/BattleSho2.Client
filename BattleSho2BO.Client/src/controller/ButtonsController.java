@@ -15,9 +15,11 @@ import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
+import java.util.LinkedList;
 
 import javax.swing.JOptionPane;
 
+import model.Contrincant;
 import model.Partida;
 import model.Taulell;
 import network.ComunicacioServidor;
@@ -138,6 +140,7 @@ public class ButtonsController implements ActionListener{
 			//en un altre if del boto de confirmacio del mapa:
 			
 			try {
+				
 				taulell.carregar_taulell();
 				vistaPartida.newGameView(taulell);
 				vistaPartida.registerControllers(this);
