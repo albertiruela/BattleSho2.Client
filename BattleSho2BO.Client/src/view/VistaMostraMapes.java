@@ -60,7 +60,8 @@ public class VistaMostraMapes extends JDialog{
 		jbEscollir0.setVisible(false);
 		jbEscollir1.setVisible(true);
 		
-		contrincants = ComunicacioServidor.sendDemanaMapes("MAPES");
+		//contrincants = ComunicacioServidor.sendDemanaMapes("MAPES");
+		System.out.println("demana mapes");
 		jtTaula = fesTaula(contrincants);
 		add(jtTaula, BorderLayout.CENTER);
 		add(jpEscollir, BorderLayout.SOUTH);
@@ -92,7 +93,7 @@ public class VistaMostraMapes extends JDialog{
 		 for (Contrincant c : contrincants){
 			 String nom = c.getNom();
 			 Date dataCreacio = c.getDataCreacio();
-			 int dificultat = c.getDificultat();
+			 int dificultat = c.getMapa().getDificultat();
 			 dtm.addRow(new Object[] { nom, dataCreacio, dificultat});
 		 }
 		 

@@ -4,6 +4,7 @@ import java.io.DataInputStream;
 import java.io.DataOutputStream;
 import java.io.IOException;
 import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 import java.net.Socket;
 import java.net.UnknownHostException;
 import java.util.LinkedList;
@@ -23,9 +24,9 @@ public class ComunicacioServidor extends Thread {
 	/** el socket mitjançant el que passarem la informació al Servidor */
 	private static  Socket sServer;
 	/** l'input per on rebrem les respostes del servidor */
-	private static DataInputStream dataIn;
+	private static ObjectInputStream dataIn;
 	/** l'output per on enviarem la info a registrar o validar */
-	private static DataOutputStream dataOut;
+	private static ObjectOutputStream dataOut;
 	/** variable on assignem el port amb el que parlem al servidor */
 	private static int portServer;
 	/** controlador dels botons per alguna crida que necessitem*/
@@ -58,8 +59,8 @@ public class ComunicacioServidor extends Thread {
 		try {
 			System.out.println(portServer);
 			sServer = new Socket("127.0.0.1",portServer);
-			dataIn = new DataInputStream(sServer.getInputStream());
-			dataOut = new DataOutputStream(sServer.getOutputStream());
+			dataIn = new ObjectInputStream(sServer.getInputStream());
+			dataOut = new ObjectOutputStream(sServer.getOutputStream());
 			dataOut.writeUTF(message);
 			System.out.println(message);
 				
@@ -101,9 +102,9 @@ public class ComunicacioServidor extends Thread {
 				
 			sServer = new Socket("127.0.0.1",portServer);
 			System.out.println("eyyy2");
-			dataIn = new DataInputStream(sServer.getInputStream());
+			dataIn = new ObjectInputStream(sServer.getInputStream());
 			System.out.println("eyyy3");
-			dataOut = new DataOutputStream(sServer.getOutputStream());
+			dataOut = new ObjectOutputStream(sServer.getOutputStream());
 			dataOut.writeUTF(message);
 			System.out.println(message);
 				
@@ -132,16 +133,16 @@ public class ComunicacioServidor extends Thread {
 	return connexio;
 	}
 	
-	/*public static LinkedList<Contrincant> sendDemanaMapes(String message) throws ClassNotFoundException {
+	public static LinkedList<Contrincant> sendDemanaMapes(String message) throws ClassNotFoundException {
 		LinkedList<Contrincant> cont = new LinkedList<Contrincant>();
 		
 		boolean connexio = false;
 		try {
 			sServer = new Socket("127.0.0.1",portServer);
 			System.out.println("eyyy2");
-			objectIn = new ObjectInputStream(sServer.getInputStream());
+			dataIn = new ObjectInputStream(sServer.getInputStream());
 			System.out.println("eyyy3");
-			dataOut = new DataOutputStream(sServer.getOutputStream());
+			dataOut = new ObjectOutputStream(sServer.getOutputStream());
 			dataOut.writeUTF(message);
 			System.out.println(message);
 			
@@ -154,7 +155,7 @@ public class ComunicacioServidor extends Thread {
 			
 			
 			dataOut.close();
-			objectIn.close();
+			dataIn.close();
 			sServer.close();
 			
 		
@@ -169,7 +170,7 @@ public class ComunicacioServidor extends Thread {
 	
 	
 		return cont;
-	}*/
+	}
 	
 
 }

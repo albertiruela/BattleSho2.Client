@@ -21,9 +21,9 @@ public class Contrincant implements Serializable {
 	/**
 	 * mapa de caselles
 	 */
-	private Mapa mapa;
+	private Taulell mapa;
 	
-	public Contrincant(String nom,  Date DataCreacio, Mapa mapa){
+	public Contrincant(String nom,  Date DataCreacio, Taulell mapa){
 		
 		this.nom = nom;
 		this.DataCreacio = DataCreacio;
@@ -48,7 +48,7 @@ public class Contrincant implements Serializable {
 	 * Retorna el mapa
 	 * @return
 	 */
-	public Mapa getMapa(){
+	public Taulell getMapa(){
 		return mapa;
 	}
  	
